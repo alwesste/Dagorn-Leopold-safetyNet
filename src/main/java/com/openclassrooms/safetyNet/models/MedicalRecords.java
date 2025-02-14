@@ -9,6 +9,8 @@ public class MedicalRecords {
     private List<String> medications;
     private List<String> allergies;
 
+    public MedicalRecords() {}
+
     public MedicalRecords(String firstName, List<String> allergies, List<String> medications, String birthdate, String lastName) {
         this.firstName = firstName;
         this.allergies = allergies;
