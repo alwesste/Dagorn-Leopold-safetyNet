@@ -21,7 +21,9 @@ public class MedicalRecordsController {
     @PostMapping
     public MedicalRecords addMedicalRecord(@RequestBody MedicalRecords medicalRecords) {
         try {
+            logger.info("Requete addMedicalRecord reçue");
             medicalRecordsService.addMedicalRecord(medicalRecords);
+            logger.info("addMedicalRecord créée");
         } catch (IOException e) {
             logger.error("Erreur lors de la création du nouveau medicalRecord: {}", e.getMessage());
         }
@@ -31,7 +33,9 @@ public class MedicalRecordsController {
     @PutMapping
     public MedicalRecords modifyMedicalRecord(@RequestBody MedicalRecords medicalRecordToModify) {
         try {
+            logger.info("Requete modifyMedicalRecord reçue");
             medicalRecordsService.modifyMedicalRecord(medicalRecordToModify);
+            logger.info("addMedicalRecord modifie");
         } catch (Exception e) {
             logger.error("Erreur lors de la modification du MedicalRecord : {}", e.getMessage());
         }
@@ -39,9 +43,11 @@ public class MedicalRecordsController {
     }
 
     @DeleteMapping
-    public boolean deleteStation(@RequestBody MedicalRecords medicalRecordToDelete) {
+    public boolean deleteMedicalRecord(@RequestBody MedicalRecords medicalRecordToDelete) {
         try {
+            logger.info("Requete deleteMedicalRecord reçue");
             medicalRecordsService.deleteMedicalRecord(medicalRecordToDelete);
+            logger.info("MedicalRecord supprime");
         } catch (Exception e) {
             logger.error("La suppression à échoué: {}", e.getMessage());
         }

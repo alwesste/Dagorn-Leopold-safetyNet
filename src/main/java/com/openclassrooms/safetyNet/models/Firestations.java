@@ -4,7 +4,8 @@ public class Firestations {
     private String address;
     private String station;
 
-    public Firestations() {}
+    public Firestations() {
+    }
 
     public String getAddress() {
         return address;

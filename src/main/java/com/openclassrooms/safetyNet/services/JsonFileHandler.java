@@ -1,13 +1,11 @@
 package com.openclassrooms.safetyNet.services;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 
 // JsonFileHandler en static permet de sauver de la memoir par rapport a l'utilisation avec Autowired

@@ -8,14 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class PersonsService {
 
     /**
-     *
      * @param newPersonToAdd Represente la nouvelle personne a ajouter
      * @return la personne a ajouter (newPersonToAdd)
      * @throws IOException renvoie une erreur en cas probleme de lecture ou d'ecriture
@@ -35,19 +33,18 @@ public class PersonsService {
     }
 
     /**
-     *
      * @param personToModify represente la nouvelle personne a modifier
-     * @throws IOException renvoie une erreur en cas probleme de lecture ou d'ecriture
+     * @throws IOException             renvoie une erreur en cas probleme de lecture ou d'ecriture
      * @throws PersonNotFoundException renvoie une erreur si une personne
      */
-    public void modifyPerson (Persons personToModify) throws IOException, PersonNotFoundException {
+    public void modifyPerson(Persons personToModify) throws IOException, PersonNotFoundException {
         DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
         List<Persons> personList = jsonFile.getPersons();
 
         Optional<Persons> persons = personList.stream()
                 .filter(person ->
                         person.getFirstName().equalsIgnoreCase(personToModify.getFirstName()) &&
-                        person.getLastName().equalsIgnoreCase(personToModify.getLastName()))
+                                person.getLastName().equalsIgnoreCase(personToModify.getLastName()))
                 .findFirst();
 
         if (persons.isPresent()) {
@@ -63,11 +60,10 @@ public class PersonsService {
     }
 
     /**
-     *
      * @param personToDelete correspond a la personne à suprimmer
      * @return Un boolean si la suppression c'est bien deroulé
      * @throws PersonNotFoundException si le nom ou le prenom sont incorrect
-     * @throws IOException si un probleme est survenu dans la suppresion
+     * @throws IOException             si un probleme est survenu dans la suppresion
      */
     public void deletePerson(PersonDTO personToDelete) throws PersonNotFoundException, IOException {
         try {
@@ -77,7 +73,7 @@ public class PersonsService {
             // Supprimer la personne correspondant au prénom et au nom
             boolean isRemoved = personList.removeIf(person ->
                     person.getFirstName().equals(personToDelete.getFirstName()) &&
-                    person.getLastName().equals(personToDelete.getLastName())
+                            person.getLastName().equals(personToDelete.getLastName())
             );
 
             if (!isRemoved) {

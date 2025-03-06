@@ -8,6 +8,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/person")
 public class PersonsController {
@@ -20,7 +23,9 @@ public class PersonsController {
     @PostMapping
     public Persons addPerson(@RequestBody Persons persons) {
         try {
+            logger.info("Requete addPerson reçue");
             personsService.addPerson(persons);
+            logger.info("addPerson créée");
         } catch (Exception e) {
             logger.error("erreur lors de l'ajout de la personne: {}", e.getMessage());
         }
@@ -30,7 +35,9 @@ public class PersonsController {
     @PutMapping
     public Persons modifyPerson(@RequestBody Persons persons) {
         try {
-           personsService.modifyPerson(persons);
+            logger.info("Requete modifyPerson reçue");
+            personsService.modifyPerson(persons);
+            logger.info("modifyPerson modifiee");
         } catch (Exception e) {
             logger.error("La modification n'a pas eu lieu: {}", e.getMessage());
         }
@@ -40,7 +47,9 @@ public class PersonsController {
     @DeleteMapping
     public boolean deletePerson(@RequestBody PersonDTO personsDTO) {
         try {
+            logger.info("Requete deletePerson reçue");
             personsService.deletePerson(personsDTO);
+            logger.info("Person supprime");
         } catch (Exception e) {
             logger.error("La suppression à échoué: {}", e.getMessage());
         }

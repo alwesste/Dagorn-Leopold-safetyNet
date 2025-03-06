@@ -1,17 +1,14 @@
 package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
-import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -38,7 +35,7 @@ public class MedicalRecordsService {
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
 
         Optional<MedicalRecords> recordToMofify = medicalRecordList.stream()
-            .filter(medicalRecord ->
+                .filter(medicalRecord ->
                         medicalRecord.getFirstName().equalsIgnoreCase(medicalRecordsModified.getFirstName()) &&
                         medicalRecord.getLastName().equalsIgnoreCase(medicalRecordsModified.getLastName()))
                 .findFirst();
@@ -59,7 +56,7 @@ public class MedicalRecordsService {
 
         boolean isRemoved = medicalRecordList.removeIf(medicalRecords ->
                 medicalRecords.getFirstName().equals(medicalRecordsToDelete.getFirstName()) &&
-                medicalRecords.getLastName().equals(medicalRecordsToDelete.getLastName())
+                        medicalRecords.getLastName().equals(medicalRecordsToDelete.getLastName())
         );
 
         if (!isRemoved) {
