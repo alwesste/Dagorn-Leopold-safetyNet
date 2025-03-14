@@ -4,6 +4,7 @@ import com.openclassrooms.safetyNet.dtos.PersonDTO;
 import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Persons;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,6 +14,9 @@ import java.util.Optional;
 @Service
 public class PersonsService {
 
+    @Autowired
+    JsonFileHandler jsonFileHandler;
+
     /**
      * @param newPersonToAdd Represente la nouvelle personne a ajouter
      * @return la personne a ajouter (newPersonToAdd)
@@ -20,7 +24,7 @@ public class PersonsService {
      */
     public void addPerson(Persons newPersonToAdd) throws IOException {
         // Lire le fichier JSON et placer son contenu sous forme de map
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
         // Recuperer la cle "persons" sous forme de list
         List<Persons> personList = jsonFile.getPersons();
@@ -29,7 +33,7 @@ public class PersonsService {
         personList.add(newPersonToAdd);
 
         // Ecriture du fichier JSON avec les changements
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
     }
 
     /**
@@ -38,7 +42,7 @@ public class PersonsService {
      * @throws PersonNotFoundException renvoie une erreur si une personne
      */
     public void modifyPerson(Persons personToModify) throws IOException, PersonNotFoundException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Persons> personList = jsonFile.getPersons();
 
         Optional<Persons> persons = personList.stream()
@@ -56,7 +60,7 @@ public class PersonsService {
             person.setEmail(personToModify.getEmail());
         }
 
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
     }
 
     /**
@@ -67,7 +71,7 @@ public class PersonsService {
      */
     public void deletePerson(PersonDTO personToDelete) throws PersonNotFoundException, IOException {
         try {
-            DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+            DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
             List<Persons> personList = jsonFile.getPersons();
 
             // Supprimer la personne correspondant au prénom et au nom
@@ -81,7 +85,7 @@ public class PersonsService {
             }
 
             // Écrire dans le fichier uniquement si une suppression a eu lieu
-            JsonFileHandler.writeJsonFile(jsonFile);
+            jsonFileHandler.writeJsonFile(jsonFile);
 
         } catch (IOException e) {
             throw new IOException("Erreur lors de la suppression de la personne", e);

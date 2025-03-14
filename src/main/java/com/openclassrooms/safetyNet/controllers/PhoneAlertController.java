@@ -21,10 +21,10 @@ public class PhoneAlertController {
     FirestationsService firestationsService;
 
     @GetMapping("/phoneAlert")
-    public List<PhoneNumber> getPhoneNumberFromStation(@RequestParam("firestationNumber") int firestationNumber) throws IOException {
-        logger.info("Requête reçue pour obtenir numero de telephones couvert par la station numero: {}", firestationNumber);
+    public List<PhoneNumber> getPhoneNumberFromStation(@RequestParam("firestation") int firestation) throws IOException {
+        logger.info("Requête reçue pour obtenir numero de telephones couvert par la station numero: {}", firestation);
         logger.info("Requete recue");
-        List<String> addresses = firestationsService.getAdressfromStationNumber(firestationNumber);
+        List<String> addresses = firestationsService.getAddressfromStationNumber(firestation);
         return firestationsService.getPhoneFromAddressFromStationNumber(addresses);
     }
 

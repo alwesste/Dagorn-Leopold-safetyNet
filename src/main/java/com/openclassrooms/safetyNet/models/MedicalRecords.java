@@ -9,14 +9,15 @@ public class MedicalRecords {
     private List<String> medications;
     private List<String> allergies;
 
-    public MedicalRecords() {}
+    public MedicalRecords() {
+    }
 
-    public MedicalRecords(String firstName, List<String> allergies, List<String> medications, String birthdate, String lastName) {
+    public MedicalRecords(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
         this.firstName = firstName;
-        this.allergies = allergies;
-        this.medications = medications;
-        this.birthdate = birthdate;
         this.lastName = lastName;
+        this.birthdate = birthdate;
+        this.medications = medications;
+        this.allergies = allergies;
     }
 
     public String getFirstName() {

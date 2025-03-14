@@ -4,6 +4,7 @@ import com.openclassrooms.safetyNet.models.*;
 import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.result.ChildInformation;
 import com.openclassrooms.safetyNet.result.FamilyMember;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,8 +17,11 @@ import java.util.Optional;
 @Service
 public class ChildAlertService {
 
-    public Object getListOfChild(String address) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+    @Autowired
+    JsonFileHandler jsonFileHandler;
+
+    public ChildAlert getListOfChild(String address) throws IOException {
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
         List<Persons> personByAddress = jsonFile.getPersons().stream()
                 .filter(person -> person.getAddress().equalsIgnoreCase(address))
@@ -38,7 +42,7 @@ public class ChildAlertService {
                 .toList();
 
         if (children.isEmpty()) {
-            return "";
+            return null;
         } else {
             return new ChildAlert(children, famillyMember);
         }
@@ -57,7 +61,6 @@ public class ChildAlertService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
             LocalDate birthDate = LocalDate.parse(birthdate, formatter);
             return Period.between(birthDate, LocalDate.now()).getYears();
-
     }
 
 

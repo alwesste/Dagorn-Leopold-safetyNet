@@ -7,6 +7,7 @@ import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,8 +24,11 @@ public class FirestationsService {
 
     private static final Logger logger = LogManager.getLogger(FirestationsService.class);
 
+    @Autowired
+    private JsonFileHandler jsonFileHandler;
+
     public StationCover getCoverPersons(int stationNumber) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestations> fireStationList = jsonFile.getFirestations();
         List<Persons> personsList = jsonFile.getPersons();
         List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
@@ -61,7 +65,7 @@ public class FirestationsService {
     }
 
     // 1. Fonction pour récupérer les adresses par numéro de station
-    private List<String> getAddressesByStation(List<Firestations> fireStations, int stationNumber) {
+    public List<String> getAddressesByStation(List<Firestations> fireStations, int stationNumber) {
         return fireStations.stream()
                 .filter(fs -> fs.getStation().equals(String.valueOf(stationNumber)))
                 .map(Firestations::getAddress)
@@ -69,14 +73,14 @@ public class FirestationsService {
     }
 
     // 2. Fonction pour récupérer les personnes par adresses
-    private List<Persons> getPersonsByAddresses(List<Persons> persons, List<String> addresses) {
+    public List<Persons> getPersonsByAddresses(List<Persons> persons, List<String> addresses) {
         return persons.stream()
                 .filter(person -> addresses.contains(person.getAddress()))
                 .toList();
     }
 
     // 3. Fonction pour calculer l'âge à partir du prénom et nom
-    private int calculateAge(Persons person, List<MedicalRecords> medicalRecords) {
+    public int calculateAge(Persons person, List<MedicalRecords> medicalRecords) {
         return medicalRecords.stream()
                 .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName()) && mr.getLastName().equalsIgnoreCase(person.getLastName()))
                 .findFirst()
@@ -92,16 +96,16 @@ public class FirestationsService {
                 .orElse(0);
     }
 
-    public List<String> getAdressfromStationNumber(int firestationNumber) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+    public List<String> getAddressfromStationNumber(int firestation) throws IOException {
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         return  jsonFile.getFirestations().stream()
-                .filter(sa -> sa.getStation().equals(String.valueOf(firestationNumber)))
+                .filter(sa -> sa.getStation().equals(String.valueOf(firestation)))
                 .map(Firestations::getAddress)
                 .toList();
     }
 
     public List<PhoneNumber> getPhoneFromAddressFromStationNumber(List<String> stationAddress) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         return jsonFile.getPersons().stream()
                 .filter(pn -> stationAddress.contains(pn.getAddress()))
                 .map(pn -> new PhoneNumber(pn.getPhone()))
@@ -111,16 +115,16 @@ public class FirestationsService {
 
 
     public void addFireStation(Firestations newFirestations) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestations> fireStationList = jsonFile.getFirestations();
 
         fireStationList.add(newFirestations);
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
     }
 
 
     public void modifyFireStation(Firestations firestationModified) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestations> fireStationList = jsonFile.getFirestations();
 
         Optional<Firestations> oFirestationsToModify = fireStationList.stream()
@@ -135,13 +139,13 @@ public class FirestationsService {
             firestations.setStation(firestationModified.getStation());
         }
 
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
 
     }
 
     public void deleteStation(Firestations firestationsToDelete) throws IOException, FirestationNotFoundException {
 
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestations> firestationsList = jsonFile.getFirestations();
 
         boolean isRemoved = firestationsList.removeIf(firestations ->
@@ -153,7 +157,7 @@ public class FirestationsService {
             throw new FirestationNotFoundException("FireStation introuvable avec le prénom et le nom fournis.");
         }
 
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
 
     }
 }

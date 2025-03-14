@@ -5,6 +5,7 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,8 +17,11 @@ public class MedicalRecordsService {
 
     private static final Logger logger = LogManager.getLogger(MedicalRecordsService.class);
 
+    @Autowired
+    private JsonFileHandler jsonFileHandler;
+
     public void addMedicalRecord(MedicalRecords newMedicalRecord) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
 
         try {
@@ -27,11 +31,11 @@ public class MedicalRecordsService {
             logger.error("L'ajout d'un nouveau suivi medical à échoué: {}", e.getMessage());
         }
 
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
     }
 
     public void modifyMedicalRecord(MedicalRecords medicalRecordsModified) throws IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
 
         Optional<MedicalRecords> recordToMofify = medicalRecordList.stream()
@@ -47,11 +51,11 @@ public class MedicalRecordsService {
             medicalRecord.setAllergies(medicalRecordsModified.getAllergies());
         }
 
-        JsonFileHandler.writeJsonFile(jsonFile);
+        jsonFileHandler.writeJsonFile(jsonFile);
     }
 
     public void deleteMedicalRecord(MedicalRecords medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
-        DataJsonHandler jsonFile = JsonFileHandler.readJsonFile();
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
 
         boolean isRemoved = medicalRecordList.removeIf(medicalRecords ->

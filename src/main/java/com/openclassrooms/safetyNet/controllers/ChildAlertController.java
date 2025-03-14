@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyNet.controllers;
 
+import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.services.ChildAlertService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,7 @@ public class ChildAlertController {
     ChildAlertService childAlertService;
 
     @GetMapping
-    private Object getChild(@RequestParam("address") String address) throws IOException {
+    private ChildAlert getChild(@RequestParam("address") String address) throws IOException {
         logger.info("Requête reçue pour obtenir les enfants couverts en fonctions des adresses: {}", address);
         logger.info("Requete recue");
         return childAlertService.getListOfChild(address);
