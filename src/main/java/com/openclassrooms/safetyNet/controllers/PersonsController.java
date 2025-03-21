@@ -1,11 +1,11 @@
 package com.openclassrooms.safetyNet.controllers;
 
-import com.openclassrooms.safetyNet.dtos.PersonDTO;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.services.PersonsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +17,7 @@ public class PersonsController {
     @Autowired
     private PersonsService personsService;
 
+    @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public Persons addPerson(@RequestBody Persons persons) {
         try {
@@ -29,6 +30,7 @@ public class PersonsController {
         return persons;
     }
 
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public Persons modifyPerson(@RequestBody Persons persons) {
         try {
@@ -41,11 +43,12 @@ public class PersonsController {
         return persons;
     }
 
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
-    public boolean deletePerson(@RequestBody PersonDTO personsDTO) {
+    public boolean deletePerson(@RequestBody Persons person) {
         try {
             logger.info("Requete deletePerson reçue");
-            personsService.deletePerson(personsDTO);
+            personsService.deletePerson(person);
             logger.info("Person supprime");
         } catch (Exception e) {
             logger.error("La suppression à échoué: {}", e.getMessage());

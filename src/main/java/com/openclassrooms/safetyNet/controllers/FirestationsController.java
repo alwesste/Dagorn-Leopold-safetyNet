@@ -40,6 +40,7 @@ public class FirestationsController {
         }
     }
 
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public Firestations modifyStation(@RequestBody Firestations firestationsToModify) {
         try {
@@ -52,6 +53,7 @@ public class FirestationsController {
         return firestationsToModify;
     }
 
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
     public boolean deleteStation(@RequestBody Firestations firestationsToDelete) {
         try {
