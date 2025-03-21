@@ -3,7 +3,6 @@ package com.openclassrooms.safetyNet.services;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
-import com.openclassrooms.safetyNet.result.PersonInfoLastname;
 import com.openclassrooms.safetyNet.result.PersonInfoLastnameDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,10 +21,10 @@ public class PersonLastNameSercice {
     @Autowired
     JsonFileHandler jsonFileHandler;
 
-    public PersonInfoLastname getPersonInfoFromLastName(String lastName) throws IOException {
+    public List<PersonInfoLastnameDetail> getPersonInfoFromLastName(String lastName) throws IOException {
         DataJsonHandler jsonfile = jsonFileHandler.readJsonFile();
 
-        List<PersonInfoLastnameDetail> personInfoLastnameDetails = jsonfile.getPersons().stream()
+        return jsonfile.getPersons().stream()
                 .filter(persons -> persons.getLastName().equalsIgnoreCase(lastName))
                 .map(person -> {
                     Optional<MedicalRecords> medicalRecord = jsonfile.getMedicalrecords().stream()
@@ -39,7 +38,7 @@ public class PersonLastNameSercice {
                                 if (!mr.getMedications().isEmpty() || !mr.getAllergies().isEmpty()) {
                                     histories.add(new MedicalHistory(mr.getMedications(), mr.getAllergies()));
                                 }
-                                return histories.isEmpty() ? null : histories; // Renvoie null si vide
+                                return histories.isEmpty() ? null : histories;
                             })
                             .orElse(null);
                     int age = medicalRecord
@@ -56,9 +55,6 @@ public class PersonLastNameSercice {
                     );
                 })
                 .toList();
-
-        return new PersonInfoLastname(personInfoLastnameDetails);
-
     }
 
     private int calculateAge(String birthdate) {

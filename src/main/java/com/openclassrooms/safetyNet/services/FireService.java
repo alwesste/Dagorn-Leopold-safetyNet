@@ -4,9 +4,8 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
-import com.openclassrooms.safetyNet.result.FireHabitant;
+import com.openclassrooms.safetyNet.result.FireHabitantDetails;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
-import com.openclassrooms.safetyNet.result.PersonDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,7 @@ public class FireService {
     @Autowired
     JsonFileHandler jsonFileHandler;
 
-    public FireHabitant getFireHabitantByAdress(String address) throws IOException {
+    public List<FireHabitantDetails> getFireHabitantByAdress(String address) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
         List<Persons> personsAtAddress = jsonFile.getPersons().stream()
@@ -37,7 +36,7 @@ public class FireService {
                 .findFirst()
                 .orElse(null);
 
-        List<PersonDetails> personDetailsList = personsAtAddress.stream()
+        return personsAtAddress.stream()
                 .map(person -> {
                     Optional<MedicalRecords> medicalRecord = jsonFile.getMedicalrecords().stream()
                             .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName())
@@ -52,7 +51,7 @@ public class FireService {
                             .map(mr -> List.of(new MedicalHistory(mr.getMedications(), mr.getAllergies())))
                             .orElse(new ArrayList<>());
 
-                    return new PersonDetails(
+                    return new FireHabitantDetails(
                             person.getFirstName(),
                             person.getLastName(),
                             person.getPhone(),
@@ -62,8 +61,6 @@ public class FireService {
                     );
                 })
                 .toList();
-
-        return new FireHabitant(personDetailsList);
     }
 
     private int calculateAge(String birthdate) {

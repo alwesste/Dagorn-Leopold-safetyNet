@@ -1,7 +1,10 @@
 package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.FirestationNotFoundException;
-import com.openclassrooms.safetyNet.models.*;
+import com.openclassrooms.safetyNet.models.DataJsonHandler;
+import com.openclassrooms.safetyNet.models.Firestations;
+import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.PersonInformation;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
@@ -98,7 +101,7 @@ public class FirestationsService {
 
     public List<String> getAddressfromStationNumber(int firestation) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        return  jsonFile.getFirestations().stream()
+        return jsonFile.getFirestations().stream()
                 .filter(sa -> sa.getStation().equals(String.valueOf(firestation)))
                 .map(Firestations::getAddress)
                 .toList();
@@ -150,7 +153,7 @@ public class FirestationsService {
 
         boolean isRemoved = firestationsList.removeIf(firestations ->
                 firestations.getAddress().equalsIgnoreCase(firestationsToDelete.getAddress()) &&
-                        firestations.getStation().equalsIgnoreCase(firestationsToDelete.getStation())
+                firestations.getStation().equalsIgnoreCase(firestationsToDelete.getStation())
         );
 
         if (!isRemoved) {

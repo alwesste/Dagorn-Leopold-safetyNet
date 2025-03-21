@@ -41,7 +41,7 @@ public class MedicalRecordsService {
         Optional<MedicalRecords> recordToMofify = medicalRecordList.stream()
                 .filter(medicalRecord ->
                         medicalRecord.getFirstName().equalsIgnoreCase(medicalRecordsModified.getFirstName()) &&
-                        medicalRecord.getLastName().equalsIgnoreCase(medicalRecordsModified.getLastName()))
+                                medicalRecord.getLastName().equalsIgnoreCase(medicalRecordsModified.getLastName()))
                 .findFirst();
 
         if (recordToMofify.isPresent()) {
