@@ -5,7 +5,6 @@ import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.result.FamilyMember;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -18,40 +17,32 @@ import java.util.Objects;
 @Service
 public class ChildAlertService {
 
-    @Autowired
-    JsonFileHandler jsonFileHandler;
+    private JsonFileHandler jsonFileHandler;
+
+    public ChildAlertService(JsonFileHandler jsonFileHandler) {
+        this.jsonFileHandler = jsonFileHandler;
+    }
+
 
     public List<ChildAlert> getListOfChild(String address) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
-        List<Persons> personByAddress = jsonFile.getPersons().stream()
-                .filter(person -> person.getAddress().equalsIgnoreCase(address))
-                .toList();
+        List<Persons> personByAddress = jsonFile.getPersons().stream().filter(person -> person.getAddress().equalsIgnoreCase(address)).toList();
 
-        List<ChildAlert> children = personByAddress.stream()
-                .map(persons -> {
-                    MedicalRecords medicalrecord = jsonFile.getMedicalrecords().stream()
-                            .filter(mr -> mr.getFirstName().equalsIgnoreCase(persons.getFirstName()) &&
-                                    mr.getLastName().equalsIgnoreCase(persons.getLastName()))
-                            .findFirst()
-                            .orElse(null);
+        List<ChildAlert> children = personByAddress.stream().map(persons -> {
+            MedicalRecords medicalrecord = jsonFile.getMedicalrecords().stream().filter(mr -> mr.getFirstName().equalsIgnoreCase(persons.getFirstName()) && mr.getLastName().equalsIgnoreCase(persons.getLastName())).findFirst().orElse(null);
 
-                    if (medicalrecord != null) {
-                        int age = calculateAge((medicalrecord.getBirthdate()));
+            if (medicalrecord != null) {
+                int age = calculateAge((medicalrecord.getBirthdate()));
 
-                        if (age < 18) {
-                            List<FamilyMember> familyMembers = personByAddress.stream()
-                                    .filter(family -> !family.getFirstName().equalsIgnoreCase(persons.getFirstName()))
-                                    .map(family -> new FamilyMember(family.getFirstName(), family.getLastName()))
-                                    .toList();
+                if (age < 18) {
+                    List<FamilyMember> familyMembers = personByAddress.stream().filter(family -> !family.getFirstName().equalsIgnoreCase(persons.getFirstName())).map(family -> new FamilyMember(family.getFirstName(), family.getLastName())).toList();
 
-                            return new ChildAlert(persons.getFirstName(), familyMembers, age, persons.getLastName());
-                        }
-                    }
-                    return null;
-                })
-                .filter(Objects::nonNull)
-                .toList();
+                    return new ChildAlert(persons.getFirstName(), familyMembers, age, persons.getLastName());
+                }
+            }
+            return null;
+        }).filter(Objects::nonNull).toList();
 
         return children.isEmpty() ? null : children;
     }

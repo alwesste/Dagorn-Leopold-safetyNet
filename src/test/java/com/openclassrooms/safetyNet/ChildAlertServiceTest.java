@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -38,21 +39,29 @@ public class ChildAlertServiceTest {
     @BeforeEach
     public void setUp() throws IOException {
         mockdataJsonHandler = new DataJsonHandler();
-        Persons child = new Persons("John","Boyd","1509 Culver St","Culver","97451","841-874-6512","jaboyd@email.com");
-        Persons adult = new Persons("Peter","Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
-        Persons familyMember = new Persons("Tenley","Boyd","1509 Culver St","Culver","97451","841-874-6512","tenz@email.com");
 
-        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John","Boyd","03/06/2020",
+        Persons child = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+        Persons adult = new Persons("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+        Persons familyMember = new Persons("Tenley", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "tenz@email.com");
+
+        List <Persons> personsList = new ArrayList<>(List.of(child, adult, familyMember));
+
+
+        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList()
         );
-        MedicalRecords medicalRecordsOfPeter = new MedicalRecords("Peter","Duncan","03/06/2000",
+        MedicalRecords medicalRecordsOfPeter = new MedicalRecords("Peter", "Duncan", "03/06/2000",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
-                Arrays.asList("allergies:illisoxian")
+                List.of("allergies:illisoxian")
         );
 
-        mockdataJsonHandler.setPersons(Arrays.asList(child, familyMember, adult));
-        mockdataJsonHandler.setMedicalrecords(Arrays.asList(medicalRecordsOfJohn, medicalRecordsOfPeter));
+        List<MedicalRecords> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn, medicalRecordsOfPeter));
+
+
+        mockdataJsonHandler.setPersons(personsList);
+        mockdataJsonHandler.setMedicalrecords(medicalRecordsList);
+        System.out.println("Persons in mockdataJsonHandler: " + mockdataJsonHandler.getPersons());
 
         when(jsonFileHandler.readJsonFile()).thenReturn(mockdataJsonHandler);
     }
@@ -61,8 +70,10 @@ public class ChildAlertServiceTest {
     public void getListOfChildTest() throws IOException {
         List<ChildAlert> result = childAlertService.getListOfChild("1509 Culver St");
 
+        assertFalse(result.isEmpty());
+
         ChildAlert childAlert = result.getFirst();
-        assertNotNull(result);
+
         assertEquals(1, result.size());
         assertEquals("John", childAlert.getFirstName());
         assertEquals("Boyd", childAlert.getLastName());
