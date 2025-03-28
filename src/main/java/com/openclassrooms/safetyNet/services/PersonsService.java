@@ -1,6 +1,5 @@
 package com.openclassrooms.safetyNet.services;
 
-import com.openclassrooms.safetyNet.dtos.PersonDTO;
 import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Persons;
@@ -69,7 +68,7 @@ public class PersonsService {
      * @throws PersonNotFoundException si le nom ou le prenom sont incorrect
      * @throws IOException             si un probleme est survenu dans la suppresion
      */
-    public void deletePerson(PersonDTO personToDelete) throws PersonNotFoundException, IOException {
+    public void deletePerson(Persons personToDelete) throws PersonNotFoundException, IOException {
         try {
             DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
             List<Persons> personList = jsonFile.getPersons();

@@ -9,7 +9,8 @@ public class Persons {
     private String phone;
     private String email;
 
-    public Persons() {}
+    public Persons() {
+    }
 
     public Persons(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
         this.firstName = firstName;
