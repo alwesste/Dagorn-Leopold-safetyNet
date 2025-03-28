@@ -2,6 +2,7 @@ package com.openclassrooms.safetyNet.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -13,7 +14,10 @@ import java.io.IOException;
 @Component
 public class JsonFileHandler {
 
-    private static final String FILE_PATH = "src/main/resources/data/data.json";
+
+    @Value("${file.path}")
+    public String filePath;
+
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
@@ -21,7 +25,7 @@ public class JsonFileHandler {
      * @throws IOException renvoie une erreur si un probleme se passe lors de la lecture.
      */
     public DataJsonHandler readJsonFile() throws IOException {
-        return objectMapper.readValue(new File(FILE_PATH), DataJsonHandler.class);
+        return objectMapper.readValue(new File(filePath), DataJsonHandler.class);
     }
 
     /**
@@ -30,6 +34,6 @@ public class JsonFileHandler {
      */
     public void writeJsonFile(DataJsonHandler data) throws IOException {
 
-        objectMapper.writeValue(new File(FILE_PATH), data);
+        objectMapper.writeValue(new File(filePath), data);
     }
 }
