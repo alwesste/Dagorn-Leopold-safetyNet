@@ -3,17 +3,57 @@ package com.openclassrooms.safetyNet.result;
 import java.util.List;
 
 public class FloodHabitant {
-    List<HomeDetails> homeDetails;
+    private String firstname;
+    private String lastname;
+    private String phone;
+    private int age;
+    private List<MedicalHistory> medicalHistories;
 
-    public FloodHabitant(List<HomeDetails> homeDetails) {
-        this.homeDetails = homeDetails;
+    public FloodHabitant(String firstname, String lastname, String phone, int age, List<MedicalHistory> medicalHistories) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.age = age;
+        this.medicalHistories = medicalHistories;
     }
 
-    public List<HomeDetails> getHomeDetails() {
-        return homeDetails;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setHomeDetails(List<HomeDetails> homeDetails) {
-        this.homeDetails = homeDetails;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public List<MedicalHistory> getMedicalHistories() {
+        return medicalHistories;
+    }
+
+    public void setMedicalHistories(List<MedicalHistory> medicalHistories) {
+        this.medicalHistories = medicalHistories;
     }
 }

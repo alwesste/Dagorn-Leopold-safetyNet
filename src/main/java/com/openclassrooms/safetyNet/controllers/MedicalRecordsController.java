@@ -4,7 +4,7 @@ import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.services.MedicalRecordsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -15,9 +15,13 @@ public class MedicalRecordsController {
 
     private static final Logger logger = LogManager.getLogger(MedicalRecordsController.class);
 
-    @Autowired
-    private MedicalRecordsService medicalRecordsService;
+    private final MedicalRecordsService medicalRecordsService;
 
+    public MedicalRecordsController(MedicalRecordsService medicalRecordsService) {
+        this.medicalRecordsService = medicalRecordsService;
+    }
+
+    @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public MedicalRecords addMedicalRecord(@RequestBody MedicalRecords medicalRecords) {
         try {
@@ -30,6 +34,7 @@ public class MedicalRecordsController {
         return medicalRecords;
     }
 
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public MedicalRecords modifyMedicalRecord(@RequestBody MedicalRecords medicalRecordToModify) {
         try {
@@ -42,6 +47,7 @@ public class MedicalRecordsController {
         return medicalRecordToModify;
     }
 
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
     public boolean deleteMedicalRecord(@RequestBody MedicalRecords medicalRecordToDelete) {
         try {

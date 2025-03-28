@@ -2,6 +2,7 @@ package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.result.StationCover;
+import com.openclassrooms.safetyNet.services.FireService;
 import com.openclassrooms.safetyNet.services.FirestationsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,10 +17,14 @@ import java.io.IOException;
 @RequestMapping("/firestation")
 public class FirestationsController {
 
-    private static final Logger logger = LogManager.getLogger(PersonsController.class);
+    private static final Logger logger = LogManager.getLogger(FirestationsController.class);
 
-    @Autowired
-    private FirestationsService firestationsService;
+    private final FirestationsService firestationsService;
+
+    public FirestationsController(FirestationsService firestationsService) {
+        this.firestationsService = firestationsService;
+    }
+
 
     @GetMapping("/stationNumber")
     public StationCover getPersonsCoverByFireStation(@RequestParam("stationNumber") int stationNumber) throws IOException {
