@@ -4,7 +4,6 @@ import com.openclassrooms.safetyNet.result.*;
 import com.openclassrooms.safetyNet.services.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,24 +15,21 @@ import java.util.List;
 public class DataControllers {
 
     private static final Logger logger = LogManager.getLogger(DataControllers.class);
+    private final ChildAlertService childAlertService;
+    private final FirestationsService firestationsService;
+    private final FireService fireService;
+    private final FloodService floodService;
+    private final PersonLastNameSercice personLastNameSercice;
+    private final CommunityEmailService communityEmailService;
 
-    @Autowired
-    ChildAlertService childAlertService;
-
-    @Autowired
-    FirestationsService firestationsService;
-
-    @Autowired
-    private FireService fireService;
-
-    @Autowired
-    private FloodService floodService;
-
-    @Autowired
-    PersonLastNameSercice personLastNameSercice;
-
-    @Autowired
-    CommunityEmailService communityEmailService;
+    public DataControllers(ChildAlertService childAlertService, FirestationsService firestationsService, FireService fireService, FloodService floodService, PersonLastNameSercice personLastNameSercice, CommunityEmailService communityEmailService) {
+        this.childAlertService = childAlertService;
+        this.firestationsService = firestationsService;
+        this.fireService = fireService;
+        this.floodService = floodService;
+        this.personLastNameSercice = personLastNameSercice;
+        this.communityEmailService = communityEmailService;
+    }
 
     @GetMapping("/childAlert")
     private List<ChildAlert> getChild(@RequestParam("address") String address) throws IOException {
