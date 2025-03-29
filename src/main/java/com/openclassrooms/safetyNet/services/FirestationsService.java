@@ -5,9 +5,9 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
-import com.openclassrooms.safetyNet.result.PersonInformation;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,42 +30,42 @@ public class FirestationsService {
     @Autowired
     private JsonFileHandler jsonFileHandler;
 
-    public StationCover getCoverPersons(int stationNumber) throws IOException {
-        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<Firestations> fireStationList = jsonFile.getFirestations();
-        List<Persons> personsList = jsonFile.getPersons();
-        List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
+        public List<StationCover> getCoverPersons(int stationNumber) throws IOException {
+            DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
+            List<Firestations> fireStationList = jsonFile.getFirestations();
+            List<Persons> personsList = jsonFile.getPersons();
+            List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
+            List<String> addresses = getAddressesByStation(fireStationList, stationNumber);
+            List<Persons> persons = getPersonsByAddresses(personsList, addresses);
+            List<StationCover> stationCoverList = new ArrayList<>();
+            int adultsCount = 0;
+            int childrenCount = 0;
 
-        // 1. Récupérer les adresses par numéro de station
-        List<String> addresses = getAddressesByStation(fireStationList, stationNumber);
+            for (Persons person : persons) {
+                int age = calculateAge(person, medicalRecordsList);
 
-        // 2. Récupérer les personnes par adresses
-        List<Persons> persons = getPersonsByAddresses(personsList, addresses);
-
-        // 3. Créer la liste avec toutes les informations et compter les adultes/enfants
-        List<PersonInformation> personInfos = new ArrayList<>();
-        int adultsCount = 0;
-        int childrenCount = 0;
-
-        for (Persons person : persons) {
-            int age = calculateAge(person, medicalRecordsList);
-            personInfos.add(new PersonInformation(
-                    person.getFirstName(),
-                    person.getLastName(),
-                    person.getAddress(),
-                    person.getPhone(),
-                    age
-            ));
-
-            if (age >= 18) {
-                adultsCount++;
-            } else {
-                childrenCount++;
+                if (age >= 18) {
+                    adultsCount++;
+                } else {
+                    childrenCount++;
+                }
             }
+
+            for (Persons person : persons) {
+                int age = calculateAge(person, medicalRecordsList);
+                stationCoverList.add(new StationCover(
+                        person.getFirstName(),
+                        person.getLastName(),
+                        person.getAddress(),
+                        person.getPhone(),
+                        age,
+                        adultsCount,
+                        childrenCount
+                ));
+            }
+            return stationCoverList;
         }
 
-        return new StationCover(personInfos, adultsCount, childrenCount);
-    }
 
     // 1. Fonction pour récupérer les adresses par numéro de station
     public List<String> getAddressesByStation(List<Firestations> fireStations, int stationNumber) {

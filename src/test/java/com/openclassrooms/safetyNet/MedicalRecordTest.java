@@ -2,10 +2,8 @@ package com.openclassrooms.safetyNet;
 
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
-import com.openclassrooms.safetyNet.services.JsonFileHandler;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import com.openclassrooms.safetyNet.services.MedicalRecordsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,8 +17,6 @@ import java.io.IOException;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-
 import static org.mockito.Mockito.when;
 
 @SpringBootTest

@@ -5,8 +5,9 @@ import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
+import com.openclassrooms.safetyNet.services.CalculateAgeService;
 import com.openclassrooms.safetyNet.services.FireService;
-import com.openclassrooms.safetyNet.services.JsonFileHandler;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -33,6 +35,9 @@ public class FireServiceTest {
 
     @Mock
     JsonFileHandler jsonFileHandler;
+
+    @Mock
+    CalculateAgeService calculateAgeService;
 
     DataJsonHandler mockdataJsonHandler;
 
@@ -55,6 +60,7 @@ public class FireServiceTest {
         mockdataJsonHandler.setMedicalrecords(List.of(medicalRecordsOfJohn));
 
         when(jsonFileHandler.readJsonFile()).thenReturn(mockdataJsonHandler);
+        lenient().when(calculateAgeService.calculateAge("03/06/2020")).thenReturn(5);
 
     }
 
@@ -68,6 +74,7 @@ public class FireServiceTest {
         assertEquals("Boyd", result.getFirst().getLastname());
         assertEquals("841-874-6512", result.getFirst().getPhone());
         assertEquals("1", result.getFirst().getStationNumber());
+        assertEquals(5, result.getFirst().getAge());
         assertEquals(
                 List.of("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 result.getFirst().getMedicalHistories().getFirst().getMedicine()

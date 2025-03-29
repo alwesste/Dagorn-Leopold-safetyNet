@@ -5,13 +5,11 @@ import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.result.FloodHabitant;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +19,9 @@ public class FloodService {
 
     @Autowired
     JsonFileHandler jsonFileHandler;
+
+    @Autowired
+    CalculateAgeService calculateAgeService;
 
     public List<FloodHabitant> getHomeByStation(List<String> stations) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
@@ -40,7 +41,7 @@ public class FloodService {
                             .findFirst();
 
                     int age = medicalRecord
-                            .map(mr -> calculateAge(mr.getBirthdate()))
+                            .map(mr -> calculateAgeService.calculateAge(mr.getBirthdate()))
                             .orElse(0);
 
                     List<MedicalHistory> medicalHistories = medicalRecord
@@ -57,12 +58,4 @@ public class FloodService {
                 })
                 .toList();
     }
-
-
-    private int calculateAge(String birthdate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        LocalDate birthDate = LocalDate.parse(birthdate, formatter);
-        return Period.between(birthDate, LocalDate.now()).getYears();
-    }
-
 }

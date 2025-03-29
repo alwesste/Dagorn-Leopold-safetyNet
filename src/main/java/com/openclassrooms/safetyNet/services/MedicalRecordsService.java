@@ -3,6 +3,7 @@ package com.openclassrooms.safetyNet.services;
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

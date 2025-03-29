@@ -6,13 +6,11 @@ import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +20,9 @@ public class FireService {
 
     @Autowired
     JsonFileHandler jsonFileHandler;
+
+    @Autowired
+    CalculateAgeService calculateAgeService;
 
     public List<FireHabitantDetails> getFireHabitantByAdress(String address) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
@@ -44,7 +45,7 @@ public class FireService {
                             .findFirst();
 
                     int age = medicalRecord
-                            .map(mr -> calculateAge(mr.getBirthdate()))
+                            .map(mr -> calculateAgeService.calculateAge(mr.getBirthdate()))
                             .orElse(0);
 
                     List<MedicalHistory> medicalHistories = medicalRecord
@@ -61,11 +62,5 @@ public class FireService {
                     );
                 })
                 .toList();
-    }
-
-    private int calculateAge(String birthdate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        LocalDate birthDate = LocalDate.parse(birthdate, formatter);
-        return Period.between(birthDate, LocalDate.now()).getYears();
     }
 }

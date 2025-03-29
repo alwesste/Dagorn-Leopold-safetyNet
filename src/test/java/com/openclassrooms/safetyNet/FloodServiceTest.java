@@ -5,8 +5,9 @@ import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.FloodHabitant;
+import com.openclassrooms.safetyNet.services.CalculateAgeService;
 import com.openclassrooms.safetyNet.services.FloodService;
-import com.openclassrooms.safetyNet.services.JsonFileHandler;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,6 +32,9 @@ public class FloodServiceTest {
 
     @Mock
     JsonFileHandler jsonFileHandler;
+
+    @Mock
+    CalculateAgeService calculateAgeService;
 
     @InjectMocks
     FloodService floodService;
@@ -64,6 +69,7 @@ public class FloodServiceTest {
         List<MedicalRecords> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn, medicalRecordsOfClara, medicalRecordsOfPaul));
 
         when(jsonFileHandler.readJsonFile()).thenReturn(mockDataJsonFileHandler);
+        lenient().when(calculateAgeService.calculateAge("03/06/2020")).thenReturn(5);
 
         mockDataJsonFileHandler.setFirestations(firestationsList);
         mockDataJsonFileHandler.setPersons(personsList);

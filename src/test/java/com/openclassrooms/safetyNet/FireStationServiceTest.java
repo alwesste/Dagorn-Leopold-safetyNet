@@ -5,10 +5,9 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
-import com.openclassrooms.safetyNet.result.PersonInformation;
 import com.openclassrooms.safetyNet.result.StationCover;
 import com.openclassrooms.safetyNet.services.FirestationsService;
-import com.openclassrooms.safetyNet.services.JsonFileHandler;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -83,25 +82,22 @@ public class FireStationServiceTest {
     @Test
     public void getCoverPersonTest() throws IOException {
 
-        StationCover result = firestationsService.getCoverPersons(1);
+        List<StationCover> result = firestationsService.getCoverPersons(1);
 
         assertNotNull(result);
+        System.out.println(result);
+        assertEquals(3, result.getFirst().getAdultsCount());
+        assertEquals(2, result.getFirst().getChildrenCount());
 
-        assertEquals(3, result.getAdultsCount());
-        assertEquals(2, result.getChildrenCount());
-
-        List<PersonInformation> persons = result.getPersons();
-        assertNotNull(persons);
-
-        PersonInformation john = persons.stream()
-                .filter(p -> p.getFirstName().equals("John") && p.getLastName().equals("Boyd"))
+        StationCover stationCover = result.stream()
+                .filter(sc -> sc.getFirstName().equals("John") && sc.getLastName().equals("Boyd"))
                 .findFirst()
                 .orElse(null);
 
-        assertNotNull(john, "John Boyd devrait être dans la liste.");
-        assertEquals("1509 Culver St", john.getAddress());
-        assertEquals("841-874-6512", john.getPhone());
-        assertEquals(5, john.getAge());
+        assertNotNull(stationCover, "John Boyd devrait être dans la liste.");
+        assertEquals("1509 Culver St", stationCover.getAddress());
+        assertEquals("841-874-6512", stationCover.getPhone());
+        assertEquals(5, stationCover.getAge());
     }
 
     @Test

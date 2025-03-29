@@ -2,15 +2,14 @@ package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.result.StationCover;
-import com.openclassrooms.safetyNet.services.FireService;
 import com.openclassrooms.safetyNet.services.FirestationsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -26,20 +25,32 @@ public class FirestationsController {
     }
 
 
-    @GetMapping("/stationNumber")
-    public StationCover getPersonsCoverByFireStation(@RequestParam("stationNumber") int stationNumber) throws IOException {
+    @GetMapping()
+    public List<StationCover> getPersonsCoverByFireStation(@RequestParam("stationNumber") int stationNumber) throws IOException {
         logger.info("Requête reçue pour obtenir les personnes couvertes par la station {}", stationNumber);
-        logger.info("Requete recue");
-        return firestationsService.getCoverPersons(stationNumber);
+
+        try {
+            List<StationCover> result = firestationsService.getCoverPersons(stationNumber);
+//            logger.info("Réponse envoyée pour la station {} : {} personnes couvertes", stationNumber, result.size());
+
+//            if (logger.isDebugEnabled()) {
+//                logger.debug();
+//            }
+
+            return result;
+        } catch (IOException e) {
+            logger.error("Erreur lors de l'obtention des personnes couvertes par la station {} : {}", stationNumber, e.getMessage());
+            throw e;
+        }
     }
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public void addFireStation(@RequestBody Firestations firestations) {
+        logger.info("Requete addFireStation reçue: {}", firestations);
         try {
-            logger.info("Requete addFireStation reçue");
             firestationsService.addFireStation(firestations);
-            logger.info("fireStation créée");
+            logger.info("fireStation créée: {}", firestations);
         } catch (IOException e) {
             logger.error("Erreur lors de la création de la nouvelle station de pompier: {}", e.getMessage());
         }
@@ -48,10 +59,10 @@ public class FirestationsController {
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public Firestations modifyStation(@RequestBody Firestations firestationsToModify) {
+        logger.info("Requete modifyStation reçue: {}", firestationsToModify);
         try {
-            logger.info("Requete modifyStation reçue");
             firestationsService.modifyFireStation(firestationsToModify);
-            logger.info("fireStation modifie");
+            logger.info("fireStation modifie: {}", firestationsToModify);
         } catch (Exception e) {
             logger.error("Erreur lors de la modification de la station de pompier : {}", e.getMessage());
         }
@@ -61,10 +72,10 @@ public class FirestationsController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
     public boolean deleteStation(@RequestBody Firestations firestationsToDelete) {
+        logger.info("Requete deleteStation reçue: {}", firestationsToDelete);
         try {
-            logger.info("Requete deleteStation reçue");
             firestationsService.deleteStation(firestationsToDelete);
-            logger.info("fireStation supprime");
+            logger.info("fireStation supprime: {}", firestationsToDelete);
         } catch (Exception e) {
             logger.error("La suppression à échoué: {}", e.getMessage());
         }

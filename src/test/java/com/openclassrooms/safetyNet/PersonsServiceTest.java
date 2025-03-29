@@ -6,7 +6,7 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
-import com.openclassrooms.safetyNet.services.JsonFileHandler;
+import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import com.openclassrooms.safetyNet.services.PersonsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 
 
 import static org.junit.jupiter.api.Assertions.*;

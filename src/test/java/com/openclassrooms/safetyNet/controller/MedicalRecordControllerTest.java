@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.integration;
+package com.openclassrooms.safetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles(profiles = "test")
-public class MedicalRecordControllerIntegrationTest {
+public class MedicalRecordControllerTest {
 
     @Autowired
     MedicalRecordsService medicalRecordsService;

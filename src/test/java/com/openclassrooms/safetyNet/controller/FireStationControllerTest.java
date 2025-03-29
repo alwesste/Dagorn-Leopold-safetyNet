@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.integration;
+package com.openclassrooms.safetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyNet.models.Firestations;
@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc //@AutoConfigureMockMvc configure un environnement de test pour faire des appels HTTP.
 @ActiveProfiles(profiles = "test") //c'est pour utilise le profil test application-(test)
-public class FireStationControllerIntegrationTest {
+public class FireStationControllerTest {
 
     @Autowired
     private FirestationsService firestationsService;
@@ -35,8 +35,6 @@ public class FireStationControllerIntegrationTest {
 
     private Firestations station;
 
-    private StationCover stationCover;
-
     @BeforeEach
     void setUp() throws IOException {
         station = new Firestations("1509 Culver St", "5");
@@ -46,15 +44,15 @@ public class FireStationControllerIntegrationTest {
     @Test
     void GetPersonsCoverByFireStationTest() throws Exception {
 
-        mockMvc.perform(get("/firestation/stationNumber")
+        mockMvc.perform(get("/firestation")
                         .param("stationNumber", "1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.adultsCount").value(5))
-                .andExpect(jsonPath("$.childrenCount").value(1))
-                .andExpect(jsonPath("$.persons[0].firstName").value("Peter"))
-                .andExpect(jsonPath("$.persons[0].lastName").value("Duncan"))
-                .andExpect(jsonPath("$.persons[1].firstName").value("Reginold"))
-                .andExpect(jsonPath("$.persons[1].lastName").value("Walker"));
+                .andExpect(jsonPath("$[0].adultsCount").value(5))
+                .andExpect(jsonPath("$[0].childrenCount").value(1))
+                .andExpect(jsonPath("$[0].firstName").value("Peter"))
+                .andExpect(jsonPath("$[0]lastName").value("Duncan"))
+                .andExpect(jsonPath("$[1]firstName").value("Reginold"))
+                .andExpect(jsonPath("$[1]lastName").value("Walker"));
     }
 
 

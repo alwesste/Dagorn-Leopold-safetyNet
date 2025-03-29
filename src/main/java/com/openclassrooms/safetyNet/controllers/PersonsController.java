@@ -22,10 +22,10 @@ public class PersonsController {
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public Persons addPerson(@RequestBody Persons persons) {
+        logger.info("Requête addPerson reçue: {}", persons);
         try {
-            logger.info("Requete addPerson reçue");
             personsService.addPerson(persons);
-            logger.info("addPerson créée");
+            logger.info("addPerson créée: {}", persons );
         } catch (Exception e) {
             logger.error("erreur lors de l'ajout de la personne: {}", e.getMessage());
         }
@@ -35,10 +35,10 @@ public class PersonsController {
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public Persons modifyPerson(@RequestBody Persons persons) {
+        logger.info("Requête addPerson reçue: {}", persons);
         try {
-            logger.info("Requete modifyPerson reçue");
             personsService.modifyPerson(persons);
-            logger.info("modifyPerson modifiee");
+            logger.info("modifyPerson modifiee: {}", persons);
         } catch (Exception e) {
             logger.error("La modification n'a pas eu lieu: {}", e.getMessage());
         }
@@ -48,10 +48,10 @@ public class PersonsController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
     public boolean deletePerson(@RequestBody Persons person) {
+        logger.info("Requête addPerson reçue: {}", person);
         try {
-            logger.info("Requete deletePerson reçue");
             personsService.deletePerson(person);
-            logger.info("Person supprime");
+            logger.info("Person supprime: {}", person);
         } catch (Exception e) {
             logger.error("La suppression à échoué: {}", e.getMessage());
         }

@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.integration;
+package com.openclassrooms.safetyNet.controller;
 
 import com.openclassrooms.safetyNet.controllers.DataControllers;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,10 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles(profiles = "test")
-public class DataControllerIntegrationTest {
-
-    @Autowired
-    DataControllers dataControllers;
+public class DataControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -145,12 +143,23 @@ public class DataControllerIntegrationTest {
                         .param("city", "Culver"))
 
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(22))
-                .andExpect(jsonPath("$[0]").value("drk@email.com"))
-                .andExpect(jsonPath("$[1]").value("tenz@email.com"))
-                .andExpect(jsonPath("$[2]").value("jaboyd@email.com"))
-                .andExpect(jsonPath("$[3]").value("jaboyd@email.com"))
-                .andExpect(jsonPath("$[4]").value("drk@email.com"))
-                .andExpect(jsonPath("$[5]").value("tenz@email.com"));
+                .andExpect(jsonPath("$.length()").value(15))
+                .andExpect(jsonPath("$").value(contains(
+                        "drk@email.com",
+                        "tenz@email.com",
+                        "jaboyd@email.com",
+                        "tcoop@ymail.com",
+                        "lily@email.com",
+                        "soph@email.com",
+                        "ward@email.com",
+                        "zarc@email.com",
+                        "reg@email.com",
+                        "jpeter@email.com",
+                        "aly@imail.com",
+                        "bstel@email.com",
+                        "ssanw@email.com",
+                        "clivfd@email.com",
+                        "gramps@email.com"
+                )));
     }
 }

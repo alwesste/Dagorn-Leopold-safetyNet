@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.services;
+package com.openclassrooms.safetyNet.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;

@@ -24,10 +24,10 @@ public class MedicalRecordsController {
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public MedicalRecords addMedicalRecord(@RequestBody MedicalRecords medicalRecords) {
+        logger.info("Requete addMedicalRecord reçue: {}", medicalRecords);
         try {
-            logger.info("Requete addMedicalRecord reçue");
             medicalRecordsService.addMedicalRecord(medicalRecords);
-            logger.info("addMedicalRecord créée");
+            logger.info("addMedicalRecord créée: {}", medicalRecords);
         } catch (IOException e) {
             logger.error("Erreur lors de la création du nouveau medicalRecord: {}", e.getMessage());
         }
@@ -37,8 +37,8 @@ public class MedicalRecordsController {
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public MedicalRecords modifyMedicalRecord(@RequestBody MedicalRecords medicalRecordToModify) {
+        logger.info("Requete modifyMedicalRecord reçue: {}", medicalRecordToModify);
         try {
-            logger.info("Requete modifyMedicalRecord reçue");
             medicalRecordsService.modifyMedicalRecord(medicalRecordToModify);
             logger.info("addMedicalRecord modifie");
         } catch (Exception e) {
@@ -50,8 +50,8 @@ public class MedicalRecordsController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
     public boolean deleteMedicalRecord(@RequestBody MedicalRecords medicalRecordToDelete) {
+        logger.info("Requete deleteMedicalRecord reçue: {}", medicalRecordToDelete);
         try {
-            logger.info("Requete deleteMedicalRecord reçue");
             medicalRecordsService.deleteMedicalRecord(medicalRecordToDelete);
             logger.info("MedicalRecord supprime");
         } catch (Exception e) {
