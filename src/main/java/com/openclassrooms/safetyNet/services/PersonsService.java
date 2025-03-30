@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
+import com.openclassrooms.safetyNet.interfaces.IPersonsService;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.utils.JsonFileHandler;
@@ -12,27 +13,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonsService {
+public class PersonsService implements IPersonsService {
 
     @Autowired
     JsonFileHandler jsonFileHandler;
 
     /**
      * @param newPersonToAdd Represente la nouvelle personne a ajouter
-     * @return la personne a ajouter (newPersonToAdd)
      * @throws IOException renvoie une erreur en cas probleme de lecture ou d'ecriture
      */
+    @Override
     public void addPerson(Persons newPersonToAdd) throws IOException {
-        // Lire le fichier JSON et placer son contenu sous forme de map
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
-        // Recuperer la cle "persons" sous forme de list
         List<Persons> personList = jsonFile.getPersons();
 
-        // Genere une Map immuable dans le format attendu dans un fichier JSON
         personList.add(newPersonToAdd);
 
-        // Ecriture du fichier JSON avec les changements
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
@@ -41,6 +38,7 @@ public class PersonsService {
      * @throws IOException             renvoie une erreur en cas probleme de lecture ou d'ecriture
      * @throws PersonNotFoundException renvoie une erreur si une personne
      */
+    @Override
     public void modifyPerson(Persons personToModify) throws IOException, PersonNotFoundException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Persons> personList = jsonFile.getPersons();
@@ -69,6 +67,7 @@ public class PersonsService {
      * @throws PersonNotFoundException si le nom ou le prenom sont incorrect
      * @throws IOException             si un probleme est survenu dans la suppresion
      */
+    @Override
     public void deletePerson(Persons personToDelete) throws PersonNotFoundException, IOException {
         try {
             DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();

@@ -1,12 +1,13 @@
 package com.openclassrooms.safetyNet.services;
 
+import com.openclassrooms.safetyNet.interfaces.IFireService;
+import com.openclassrooms.safetyNet.interfaces.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +17,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FireService {
+public class FireService implements IFireService {
 
     @Autowired
-    JsonFileHandler jsonFileHandler;
+    IJsonFileHandler jsonFileHandler;
 
     @Autowired
     CalculateAgeService calculateAgeService;
 
+    @Override
     public List<FireHabitantDetails> getFireHabitantByAdress(String address) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 

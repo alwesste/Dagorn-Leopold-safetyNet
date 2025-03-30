@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
+import com.openclassrooms.safetyNet.interfaces.IMedicalRecordsService;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.utils.JsonFileHandler;
@@ -14,13 +15,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MedicalRecordsService {
+public class MedicalRecordsService implements IMedicalRecordsService {
 
     private static final Logger logger = LogManager.getLogger(MedicalRecordsService.class);
 
     @Autowired
     private JsonFileHandler jsonFileHandler;
 
+    @Override
     public void addMedicalRecord(MedicalRecords newMedicalRecord) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
@@ -35,6 +37,7 @@ public class MedicalRecordsService {
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
+    @Override
     public void modifyMedicalRecord(MedicalRecords medicalRecordsModified) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
@@ -55,6 +58,7 @@ public class MedicalRecordsService {
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
+    @Override
     public void deleteMedicalRecord(MedicalRecords medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();

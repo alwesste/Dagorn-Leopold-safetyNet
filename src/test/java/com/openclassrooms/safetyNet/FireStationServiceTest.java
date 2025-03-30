@@ -6,6 +6,7 @@ import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.StationCover;
+import com.openclassrooms.safetyNet.services.CalculateAgeService;
 import com.openclassrooms.safetyNet.services.FirestationsService;
 import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +24,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -31,6 +33,9 @@ public class FireStationServiceTest {
 
     @Mock
     private JsonFileHandler jsonFileHandler;
+
+    @Mock
+    private CalculateAgeService calculateAgeService;
 
     @InjectMocks
     private FirestationsService firestationsService;
@@ -81,6 +86,12 @@ public class FireStationServiceTest {
 
     @Test
     public void getCoverPersonTest() throws IOException {
+
+        when(calculateAgeService.calculateAge("03/06/2020")).thenReturn(5);
+        when(calculateAgeService.calculateAge("04/11/2015")).thenReturn(10);
+        when(calculateAgeService.calculateAge("03/06/1980")).thenReturn(41);
+        when(calculateAgeService.calculateAge("03/06/1999")).thenReturn(22);
+        when(calculateAgeService.calculateAge("03/06/2000")).thenReturn(21);
 
         List<StationCover> result = firestationsService.getCoverPersons(1);
 

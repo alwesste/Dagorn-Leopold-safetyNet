@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyNet.services;
 
+import com.openclassrooms.safetyNet.interfaces.IPersonLastNameSercice;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonLastNameSercice {
+public class PersonLastNameSercice implements IPersonLastNameSercice {
 
     @Autowired
     JsonFileHandler jsonFileHandler;
@@ -22,6 +23,7 @@ public class PersonLastNameSercice {
     @Autowired
     CalculateAgeService calculateAgeService;
 
+    @Override
     public List<PersonInfoLastnameDetail> getPersonInfoFromLastName(String lastName) throws IOException {
         DataJsonHandler jsonfile = jsonFileHandler.readJsonFile();
 

@@ -1,73 +1,88 @@
 package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.FirestationNotFoundException;
+import com.openclassrooms.safetyNet.interfaces.IFireStationService;
+import com.openclassrooms.safetyNet.interfaces.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
-public class FirestationsService {
+public class FirestationsService implements IFireStationService {
 
     private static final Logger logger = LogManager.getLogger(FirestationsService.class);
 
     @Autowired
-    private JsonFileHandler jsonFileHandler;
+    private IJsonFileHandler jsonFileHandler;
 
-        public List<StationCover> getCoverPersons(int stationNumber) throws IOException {
-            DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-            List<Firestations> fireStationList = jsonFile.getFirestations();
-            List<Persons> personsList = jsonFile.getPersons();
-            List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
-            List<String> addresses = getAddressesByStation(fireStationList, stationNumber);
-            List<Persons> persons = getPersonsByAddresses(personsList, addresses);
-            List<StationCover> stationCoverList = new ArrayList<>();
-            int adultsCount = 0;
-            int childrenCount = 0;
+    @Autowired
+    CalculateAgeService calculateAgeService;
 
-            for (Persons person : persons) {
-                int age = calculateAge(person, medicalRecordsList);
+    @Override
+    public List<StationCover> getCoverPersons(int stationNumber) throws IOException {
+        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
-                if (age >= 18) {
-                    adultsCount++;
-                } else {
-                    childrenCount++;
-                }
+        List<Firestations> fireStationList = jsonFile.getFirestations();
+        List<Persons> personsList = jsonFile.getPersons();
+        List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
+        List<String> addresses = getAddressesByStation(fireStationList, stationNumber);
+        List<Persons> persons = getPersonsByAddresses(personsList, addresses);
+        List<StationCover> stationCoverList = new ArrayList<>();
+
+        int adultsCount = 0;
+        int childrenCount = 0;
+
+        for (Persons person : persons) {
+            Optional<MedicalRecords> medicalRecord = medicalRecordsList.stream()
+                    .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName()) && mr.getLastName().equalsIgnoreCase(person.getLastName()))
+                    .findFirst();
+
+            int age = medicalRecord.map(mr -> calculateAgeService.calculateAge(mr.getBirthdate())).orElse(0);
+
+
+            if (age >= 18) {
+                adultsCount++;
+            } else {
+                childrenCount++;
             }
-
-            for (Persons person : persons) {
-                int age = calculateAge(person, medicalRecordsList);
-                stationCoverList.add(new StationCover(
-                        person.getFirstName(),
-                        person.getLastName(),
-                        person.getAddress(),
-                        person.getPhone(),
-                        age,
-                        adultsCount,
-                        childrenCount
-                ));
-            }
-            return stationCoverList;
         }
 
+        for (Persons person : persons) {
+            Optional<MedicalRecords> medicalRecord = medicalRecordsList.stream()
+                    .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName()) && mr.getLastName().equalsIgnoreCase(person.getLastName()))
+                    .findFirst();
 
-    // 1. Fonction pour récupérer les adresses par numéro de station
+            int age = medicalRecord.map(mr -> calculateAgeService.calculateAge(mr.getBirthdate())).orElse(0);
+
+            stationCoverList.add(new StationCover(
+                    person.getFirstName(),
+                    person.getLastName(),
+                    person.getAddress(),
+                    person.getPhone(),
+                    age,
+                    adultsCount,
+                    childrenCount
+            ));
+        }
+
+        return stationCoverList;
+    }
+
+
+    @Override
     public List<String> getAddressesByStation(List<Firestations> fireStations, int stationNumber) {
         return fireStations.stream()
                 .filter(fs -> fs.getStation().equals(String.valueOf(stationNumber)))
@@ -75,30 +90,14 @@ public class FirestationsService {
                 .toList();
     }
 
-    // 2. Fonction pour récupérer les personnes par adresses
+    @Override
     public List<Persons> getPersonsByAddresses(List<Persons> persons, List<String> addresses) {
         return persons.stream()
                 .filter(person -> addresses.contains(person.getAddress()))
                 .toList();
     }
 
-    // 3. Fonction pour calculer l'âge à partir du prénom et nom
-    public int calculateAge(Persons person, List<MedicalRecords> medicalRecords) {
-        return medicalRecords.stream()
-                .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName()) && mr.getLastName().equalsIgnoreCase(person.getLastName()))
-                .findFirst()
-                .map(mr -> {
-                    try {
-                        LocalDate birthDate = LocalDate.parse(mr.getBirthdate(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-                        return Period.between(birthDate, LocalDate.now()).getYears();
-                    } catch (Exception e) {
-                        logger.error("Erreur dans le calcu de l'age de : " + person.getFirstName() + " " + person.getLastName(), e);
-                        return 0;
-                    }
-                })
-                .orElse(0);
-    }
-
+    @Override
     public List<String> getAddressfromStationNumber(int firestation) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         return jsonFile.getFirestations().stream()
@@ -107,6 +106,7 @@ public class FirestationsService {
                 .toList();
     }
 
+    @Override
     public List<PhoneNumber> getPhoneFromAddressFromStationNumber(List<String> stationAddress) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         return jsonFile.getPersons().stream()
@@ -116,7 +116,7 @@ public class FirestationsService {
                 .toList();
     }
 
-
+    @Override
     public void addFireStation(Firestations newFirestations) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestations> fireStationList = jsonFile.getFirestations();
@@ -125,7 +125,7 @@ public class FirestationsService {
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
-
+    @Override
     public void modifyFireStation(Firestations firestationModified) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestations> fireStationList = jsonFile.getFirestations();
@@ -134,8 +134,6 @@ public class FirestationsService {
                 .filter(firestations -> firestations.getAddress().equalsIgnoreCase(firestationModified.getAddress()))
                 .findFirst();
 
-//            oFirestationsToModify.ifPresent((f) -> {f.setStation(firestationModified.getStation());
-//            });
 
         if (oFirestationsToModify.isPresent()) {
             Firestations firestations = oFirestationsToModify.get(); //orElseGet()
@@ -146,6 +144,7 @@ public class FirestationsService {
 
     }
 
+    @Override
     public void deleteStation(Firestations firestationsToDelete) throws IOException, FirestationNotFoundException {
 
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
@@ -153,7 +152,7 @@ public class FirestationsService {
 
         boolean isRemoved = firestationsList.removeIf(firestations ->
                 firestations.getAddress().equalsIgnoreCase(firestationsToDelete.getAddress()) &&
-                firestations.getStation().equalsIgnoreCase(firestationsToDelete.getStation())
+                        firestations.getStation().equalsIgnoreCase(firestationsToDelete.getStation())
         );
 
         if (!isRemoved) {

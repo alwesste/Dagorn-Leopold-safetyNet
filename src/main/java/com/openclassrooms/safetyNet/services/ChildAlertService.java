@@ -1,13 +1,12 @@
 package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.interfaces.IChildAlertService;
+import com.openclassrooms.safetyNet.interfaces.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.result.FamilyMember;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -19,13 +18,12 @@ public class ChildAlertService implements IChildAlertService {
 
     private CalculateAgeService calculateAgeService;
 
-    private JsonFileHandler jsonFileHandler;
+    private IJsonFileHandler jsonFileHandler;
 
-    public ChildAlertService(JsonFileHandler jsonFileHandler, CalculateAgeService calculateAgeService) {
+    public ChildAlertService(IJsonFileHandler jsonFileHandler, CalculateAgeService calculateAgeService) {
         this.jsonFileHandler = jsonFileHandler;
         this.calculateAgeService = calculateAgeService;
     }
-
 
 
     @Override

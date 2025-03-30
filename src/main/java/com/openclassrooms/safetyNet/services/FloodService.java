@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyNet.services;
 
+import com.openclassrooms.safetyNet.interfaces.IFloodService;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestations;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FloodService {
+public class FloodService implements IFloodService {
 
     @Autowired
     JsonFileHandler jsonFileHandler;
@@ -23,6 +24,7 @@ public class FloodService {
     @Autowired
     CalculateAgeService calculateAgeService;
 
+    @Override
     public List<FloodHabitant> getHomeByStation(List<String> stations) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 

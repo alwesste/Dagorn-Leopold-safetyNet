@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IChildAlertService {
-
     List<ChildAlert> getListOfChild(String address) throws IOException;
 }
 

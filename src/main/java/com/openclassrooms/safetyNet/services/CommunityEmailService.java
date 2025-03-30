@@ -1,8 +1,9 @@
 package com.openclassrooms.safetyNet.services;
 
+import com.openclassrooms.safetyNet.interfaces.ICommunityEmailService;
+import com.openclassrooms.safetyNet.interfaces.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Persons;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,12 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class CommunityEmailService {
+public class CommunityEmailService implements ICommunityEmailService {
 
     @Autowired
-    JsonFileHandler jsonFileHandler;
+    IJsonFileHandler jsonFileHandler;
 
+    @Override
     public List<String> getAllEmailFromCity(String city) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
