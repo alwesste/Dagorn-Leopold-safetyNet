@@ -23,8 +23,11 @@ public class PersonRepository {
     IJsonFileHandler jsonFileHandler;
 
     /**
-     * @param newPersonToAdd Represente la nouvelle personne a ajouter
-     * @throws IOException renvoie une erreur en cas probleme de lecture ou d'ecriture
+     * Ajoute une nouvelle personne si elle n'existe pas déjà dans le fichier JSON.
+     *
+     * @param newPersonToAdd La nouvelle personne à ajouter.
+     * @throws IOException Si une erreur d'accès au fichier JSON survient.
+     * @throws PersonAlreadyExistException Si une personne avec le même prénom et nom existe déjà.
      */
     public void addPerson(Persons newPersonToAdd) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
@@ -47,9 +50,11 @@ public class PersonRepository {
     }
 
     /**
-     * @param personToModify represente la nouvelle personne a modifier
-     * @throws IOException             renvoie une erreur en cas probleme de lecture ou d'ecriture
-     * @throws PersonNotFoundException renvoie une erreur si une personne
+     * Modifie les informations d'une personne existante dans le fichier JSON.
+     *
+     * @param personToModify La personne à modifier, avec les nouvelles informations.
+     * @throws IOException Si une erreur d'accès au fichier JSON survient.
+     * @throws PersonNotFoundException Si la personne à modifier n'est pas trouvée.
      */
     public void modifyPerson(Persons personToModify) throws IOException, PersonNotFoundException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
@@ -77,10 +82,11 @@ public class PersonRepository {
     }
 
     /**
-     * @param personToDelete correspond a la personne à suprimmer
-     * @return Un boolean si la suppression c'est bien deroulé
-     * @throws PersonNotFoundException si le nom ou le prenom sont incorrect
-     * @throws IOException             si un probleme est survenu dans la suppresion
+     * Supprime une personne du fichier JSON en fonction de son prénom et nom.
+     *
+     * @param personToDelete La personne à supprimer.
+     * @throws PersonNotFoundException Si la personne à supprimer n'est pas trouvée.
+     * @throws IOException Si une erreur d'accès au fichier JSON survient.
      */
     public void deletePerson(Persons personToDelete) throws PersonNotFoundException, IOException {
         try {

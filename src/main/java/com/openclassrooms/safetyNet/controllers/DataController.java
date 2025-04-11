@@ -59,7 +59,7 @@ public class DataController {
     /**
      *
      * @param address a verifier
-     * @return une liste doit inclure le nom, le numéro de téléphone, l'âge et les antécédents médicaux.
+     * @return Une liste qui inclut le nom, le numéro de téléphone, l'âge et les antécédents médicaux.
      * @throws IOException en cas d'erreur lors de l'accès aux données
      */
     @GetMapping("/fire")

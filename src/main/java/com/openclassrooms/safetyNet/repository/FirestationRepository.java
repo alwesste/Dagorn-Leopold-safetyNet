@@ -21,6 +21,13 @@ public class FirestationRepository {
     @Autowired
     IJsonFileHandler jsonFileHandler;
 
+    /**
+     * Ajoute une nouvelle caserne (Firestation) si elle n'existe pas déjà.
+     *
+     * @param newFirestation La caserne à ajouter.
+     * @throws IOException, Si une erreur de lecture/écriture du fichier survient.
+     * @throws FireStationAlreadyExistsException, Si la caserne existe déjà avec la même adresse et station.
+     */
     public void addFireStation(Firestation newFirestation) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestation> fireStationList = jsonFile.getFirestations();
@@ -39,6 +46,12 @@ public class FirestationRepository {
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
+    /**
+     * Modifie une caserne existante en mettant à jour le numéro de station associé à une adresse donnée.
+     *
+     * @param firestationModified L'objet Firestation contenant l'adresse à modifier et la nouvelle station.
+     * @throws IOException Si une erreur de lecture/écriture du fichier survient.
+     */
     public void modifyFireStation(Firestation firestationModified) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<Firestation> fireStationList = jsonFile.getFirestations();
@@ -58,6 +71,13 @@ public class FirestationRepository {
 
     }
 
+    /**
+     * Supprime une caserne existante en fonction de l'adresse et du numéro de station.
+     *
+     * @param firestationToDelete La caserne à supprimer.
+     * @throws IOException, Si une erreur de lecture/écriture du fichier survient.
+     * @throws FirestationNotFoundException, Si la caserne à supprimer n'existe pas.
+     */
     public void deleteFireStation(Firestation firestationToDelete) throws IOException, FirestationNotFoundException {
 
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();

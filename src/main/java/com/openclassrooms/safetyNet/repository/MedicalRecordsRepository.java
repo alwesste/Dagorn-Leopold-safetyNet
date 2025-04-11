@@ -23,11 +23,17 @@ public class MedicalRecordsRepository{
     @Autowired
     private IJsonFileHandler jsonFileHandler;
 
-
+    /**
+     * Ajoute un nouveau dossier médical si aucune correspondance prénom/nom n'existe déjà.
+     *
+     * @param newMedicalRecord Le dossier médical à ajouter.
+     * @throws IOException, Si une erreur d'accès au fichier JSON survient.
+     * @throws MedicalRecordExistException, Si un dossier médical avec le même prénom et nom existe déjà.
+     */
     public void addMedicalRecord(MedicalRecords newMedicalRecord) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
-        logger.debug("NewMedicalRecord : {}", newMedicalRecord);
+        logger.debug("Nouveau MedicalRecord à ajouter : {}", newMedicalRecord);
 
         boolean medicalRecordAlreadyExist = medicalRecordList.stream()
                 .anyMatch(medicalRecords -> medicalRecords.getFirstName().equalsIgnoreCase(newMedicalRecord.getFirstName()) &&
@@ -43,6 +49,12 @@ public class MedicalRecordsRepository{
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
+    /**
+     * Modifie un dossier médical existant en mettant à jour la date de naissance, les médicaments et les allergies.
+     *
+     * @param medicalRecordsModified Le dossier médical modifié à enregistrer.
+     * @throws IOException Si une erreur d'accès au fichier JSON survient.
+     */
     public void modifyMedicalRecord(MedicalRecords medicalRecordsModified) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
@@ -64,6 +76,13 @@ public class MedicalRecordsRepository{
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
+    /**
+     * Supprime un dossier médical en fonction du prénom et du nom fournis.
+     *
+     * @param medicalRecordsToDelete Le dossier médical à supprimer.
+     * @throws MedicallRecordNotFoundException Si aucun dossier ne correspond au prénom et nom donnés.
+     * @throws IOException, Si une erreur d'accès au fichier JSON survient.
+     */
     public void deleteMedicalRecord(MedicalRecords medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         logger.debug("MedicalRecord to delete: {}", medicalRecordsToDelete);
