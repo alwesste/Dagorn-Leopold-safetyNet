@@ -1,51 +1,57 @@
-package com.openclassrooms.safetyNet.services;
+package com.openclassrooms.safetyNet.repository;
 
+import com.openclassrooms.safetyNet.exceptions.MedicalRecordExistException;
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
-import com.openclassrooms.safetyNet.interfaces.IMedicalRecordsService;
+import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
+import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class MedicalRecordsService implements IMedicalRecordsService {
+@Repository
+public class MedicalRecordsRepository{
 
     private static final Logger logger = LogManager.getLogger(MedicalRecordsService.class);
 
     @Autowired
-    private JsonFileHandler jsonFileHandler;
+    private IJsonFileHandler jsonFileHandler;
 
-    @Override
+
     public void addMedicalRecord(MedicalRecords newMedicalRecord) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
+        logger.debug("NewMedicalRecord : {}", newMedicalRecord);
 
-        try {
-            medicalRecordList.add(newMedicalRecord);
+        boolean medicalRecordAlreadyExist = medicalRecordList.stream()
+                .anyMatch(medicalRecords -> medicalRecords.getFirstName().equalsIgnoreCase(newMedicalRecord.getFirstName()) &&
+                        medicalRecords.getLastName().equalsIgnoreCase(newMedicalRecord.getLastName()));
 
-        } catch (Exception e) {
-            logger.error("L'ajout d'un nouveau suivi medical à échoué: {}", e.getMessage());
+        if (medicalRecordAlreadyExist) {
+            logger.warn("Le medicalRecord existe déjà dans data.json: {} {}", newMedicalRecord.getFirstName(), newMedicalRecord.getLastName());
+            throw new MedicalRecordExistException("Erreur lors de l'ajout. Le medicalRecord existe deja avec ce nom et prenom");
         }
+
+        medicalRecordList.add(newMedicalRecord);
 
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
-    @Override
     public void modifyMedicalRecord(MedicalRecords medicalRecordsModified) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
+        logger.debug("MedicalRecord modifie: {}", medicalRecordsModified);
 
         Optional<MedicalRecords> recordToMofify = medicalRecordList.stream()
                 .filter(medicalRecord ->
                         medicalRecord.getFirstName().equalsIgnoreCase(medicalRecordsModified.getFirstName()) &&
-                                medicalRecord.getLastName().equalsIgnoreCase(medicalRecordsModified.getLastName()))
+                        medicalRecord.getLastName().equalsIgnoreCase(medicalRecordsModified.getLastName()))
                 .findFirst();
 
         if (recordToMofify.isPresent()) {
@@ -58,10 +64,12 @@ public class MedicalRecordsService implements IMedicalRecordsService {
         jsonFileHandler.writeJsonFile(jsonFile);
     }
 
-    @Override
     public void deleteMedicalRecord(MedicalRecords medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
+        logger.debug("MedicalRecord to delete: {}", medicalRecordsToDelete);
+
         List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
+        logger.debug("Liste des medicalRecord present : {}", medicalRecordList);
 
         boolean isRemoved = medicalRecordList.removeIf(medicalRecords ->
                 medicalRecords.getFirstName().equals(medicalRecordsToDelete.getFirstName()) &&
@@ -69,8 +77,10 @@ public class MedicalRecordsService implements IMedicalRecordsService {
         );
 
         if (!isRemoved) {
-            throw new MedicallRecordNotFoundException("Personne introuvable avec le prénom et le nom fournis.");
+            throw new MedicallRecordNotFoundException("MedicalRecord introuvable avec le prénom et le nom fournis.");
         }
+
+        jsonFileHandler.writeJsonFile(jsonFile);
     }
 
 }

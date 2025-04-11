@@ -1,13 +1,13 @@
 package com.openclassrooms.safetyNet;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Firestations;
+import com.openclassrooms.safetyNet.models.Firestation;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.FloodHabitant;
-import com.openclassrooms.safetyNet.services.CalculateAgeService;
-import com.openclassrooms.safetyNet.services.FloodService;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
+import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
+import com.openclassrooms.safetyNet.services.impl.FloodService;
+import com.openclassrooms.safetyNet.repository.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,9 +50,9 @@ public class FloodServiceTest {
         Persons personPaul = new Persons("Paul", "steph", "456 Oak St", "Culver", "97451", "841-874-6512", "Paul@email.com");
         List<Persons> personsList = new ArrayList<>(List.of(personJohn, personClara, personPaul));
 
-        Firestations firestations1 = new Firestations("1509 Culver St", "1");
-        Firestations firestations2 = new Firestations("456 Oak St", "2");
-        List<Firestations> firestationsList = new ArrayList<>(List.of(firestations1, firestations2));
+        Firestation firestation1 = new Firestation("1509 Culver St", "1");
+        Firestation firestation2 = new Firestation("456 Oak St", "2");
+        List<Firestation> firestationList = new ArrayList<>(List.of(firestation1, firestation2));
 
         MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John","Boyd","03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
@@ -71,7 +71,7 @@ public class FloodServiceTest {
         when(jsonFileHandler.readJsonFile()).thenReturn(mockDataJsonFileHandler);
         lenient().when(calculateAgeService.calculateAge("03/06/2020")).thenReturn(5);
 
-        mockDataJsonFileHandler.setFirestations(firestationsList);
+        mockDataJsonFileHandler.setFirestations(firestationList);
         mockDataJsonFileHandler.setPersons(personsList);
         mockDataJsonFileHandler.setMedicalrecords(medicalRecordsList);
     }

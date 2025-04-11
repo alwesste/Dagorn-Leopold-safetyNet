@@ -26,4 +26,12 @@ public class MedicalHistory {
     public void setAllergie(List<String> allergie) {
         this.allergie = allergie;
     }
+
+    @Override
+    public String toString() {
+        return "MedicalHistory{" +
+                "medicine=" + medicine +
+                ", allergie=" + allergie +
+                '}';
+    }
 }

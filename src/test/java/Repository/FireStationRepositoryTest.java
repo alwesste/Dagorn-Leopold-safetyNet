@@ -1,13 +1,14 @@
-//package com.openclassrooms.safetyNet;
+//package Repository;
 //
+//import com.openclassrooms.safetyNet.SafetyNetApplication;
 //import com.openclassrooms.safetyNet.exceptions.FirestationNotFoundException;
 //import com.openclassrooms.safetyNet.models.DataJsonHandler;
 //import com.openclassrooms.safetyNet.models.Firestations;
 //import com.openclassrooms.safetyNet.models.MedicalRecords;
 //import com.openclassrooms.safetyNet.models.Persons;
+//import com.openclassrooms.safetyNet.repository.FirestationRepository;
 //import com.openclassrooms.safetyNet.result.StationCover;
 //import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
-//import com.openclassrooms.safetyNet.services.impl.FirestationsService;
 //import com.openclassrooms.safetyNet.repository.JsonFileHandler;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
@@ -24,12 +25,12 @@
 //import java.util.List;
 //
 //import static org.junit.jupiter.api.Assertions.*;
-//import static org.mockito.ArgumentMatchers.anyString;
+//import static org.junit.jupiter.api.Assertions.assertFalse;
 //import static org.mockito.Mockito.when;
 //
-//@SpringBootTest
+//@SpringBootTest(classes = SafetyNetApplication.class)
 //@ExtendWith(MockitoExtension.class)
-//public class FireStationServiceTest {
+//public class FireStationRepositoryTest {
 //
 //    @Mock
 //    private JsonFileHandler jsonFileHandler;
@@ -38,7 +39,7 @@
 //    private CalculateAgeService calculateAgeService;
 //
 //    @InjectMocks
-//    private FirestationsService firestationsService;
+//    private FirestationRepository firestationRepository;
 //
 //    DataJsonHandler mockdataJsonHandler;
 //
@@ -93,7 +94,7 @@
 //        when(calculateAgeService.calculateAge("03/06/1999")).thenReturn(22);
 //        when(calculateAgeService.calculateAge("03/06/2000")).thenReturn(21);
 //
-//        List<StationCover> result = firestationsService.getCoverPersons(1);
+//        List<StationCover> result = firestationRepository.getCoverPersons(1);
 //
 //        assertNotNull(result);
 //        System.out.println(result);
@@ -115,7 +116,7 @@
 //    public void addFireStationTest() throws IOException {
 //        Firestations firestationsToAdd = new Firestations("111 test", "3");
 //
-//        firestationsService.addFireStation(firestationsToAdd);
+//        firestationRepository.addFireStation(firestationsToAdd);
 //        List<Firestations> allFirestations = jsonFileHandler.readJsonFile().getFirestations();
 //
 //        assertNotNull(allFirestations, "La liste des casernes n'est pas null");
@@ -135,7 +136,7 @@
 //    public void modifyFireStationTest() throws IOException {
 //
 //        Firestations newfireStation = new Firestations("456 Oak St", "3");
-//        firestationsService.modifyFireStation(newfireStation);
+//        firestationRepository.modifyFireStation(newfireStation);
 //
 //        List<Firestations> allFirestations = jsonFileHandler.readJsonFile().getFirestations();
 //
@@ -156,7 +157,7 @@
 //    public void deleteStationTest() throws IOException, FirestationNotFoundException {
 //
 //        Firestations deleletedStation = new Firestations("1509 Culver St", "1");
-//        firestationsService.deleteStation(deleletedStation);
+//        firestationRepository.deleteStation(deleletedStation);
 //
 //        List<Firestations> allFirestations = jsonFileHandler.readJsonFile().getFirestations();
 //

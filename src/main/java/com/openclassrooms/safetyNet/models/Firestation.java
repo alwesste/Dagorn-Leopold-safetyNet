@@ -1,10 +1,10 @@
 package com.openclassrooms.safetyNet.models;
 
-public class Firestations {
+public class Firestation {
     private String address;
     private String station;
 
-    public Firestations() {
+    public Firestation() {
     }
 
     public String getAddress() {
@@ -23,7 +23,7 @@ public class Firestations {
         this.station = station;
     }
 
-    public Firestations(String address, String station) {
+    public Firestation(String address, String station) {
         this.address = address;
         this.station = station;
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="INFO">
     <Appenders>
         <!-- Console -->
         <Console name="Console" target="SYSTEM_OUT">
@@ -10,16 +10,24 @@
         <File name="FileLogger" fileName="logs/app.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
+        <Policies>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            <SizeBasedTriggeringPolicy size="10MB" />
+        </Policies>
+        <DefaultRolloverStrategy max="10">
+            <Delete basePath="logs/app.log" maxDepth="10">
+                <!-- Delete all files older than 30 days -->
+                <IfLastModified age="30d" />
+            </Delete>
+        </DefaultRolloverStrategy>
     </Appenders>
 
     <Loggers>
-        <!-- Niveau de log pour l'application -->
-        <Root level="info">
+        <Root level="INFO">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
         </Root>
-        <Logger name="com.safetynet.controllers" level="debug"></Logger>
-        <Logger name="com.safetynet.result" level="debug"></Logger>
-        <Logger name="com.safetynet.services" level="debug"></Logger>
+        <Logger name="com.openclassrooms.safetyNet.services" level="DEBUG"/>
+        <Logger name="com.openclassrooms.safetyNet.repository" level="DEBUG"/>
     </Loggers>
 </Configuration>

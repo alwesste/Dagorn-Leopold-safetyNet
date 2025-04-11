@@ -2,7 +2,7 @@ package com.openclassrooms.safetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.services.MedicalRecordsService;
+import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

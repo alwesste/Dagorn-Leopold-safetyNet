@@ -1,9 +1,8 @@
 package com.openclassrooms.safetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetyNet.models.Firestations;
-import com.openclassrooms.safetyNet.result.StationCover;
-import com.openclassrooms.safetyNet.services.FirestationsService;
+import com.openclassrooms.safetyNet.models.Firestation;
+import com.openclassrooms.safetyNet.services.impl.FirestationsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +32,11 @@ public class FireStationControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private Firestations station;
+    private Firestation station;
 
     @BeforeEach
     void setUp() throws IOException {
-        station = new Firestations("1509 Culver St", "5");
+        station = new Firestation("1509 Culver St", "5");
         firestationsService.getCoverPersons(1);
     }
 
@@ -69,7 +68,7 @@ public class FireStationControllerTest {
     @Test
     void modifyStationTest() throws Exception {
 
-        Firestations stationModified = new Firestations("1509 Culver St", "15");
+        Firestation stationModified = new Firestation("1509 Culver St", "15");
 
         mockMvc.perform(put("/firestation")
                         .contentType("application/json")
@@ -81,7 +80,7 @@ public class FireStationControllerTest {
     @Test
     void deleteStationTest() throws Exception {
 
-        Firestations stationToDelete = new Firestations("1509 Culver St", "15");
+        Firestation stationToDelete = new Firestation("1509 Culver St", "15");
 
         mockMvc.perform(delete("/firestation")
                         .contentType("application/json")

@@ -1,11 +1,13 @@
-package com.openclassrooms.safetyNet.services;
+package com.openclassrooms.safetyNet.services.impl;
 
-import com.openclassrooms.safetyNet.interfaces.IPersonLastNameSercice;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
 import com.openclassrooms.safetyNet.result.PersonInfoLastnameDetail;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
+import com.openclassrooms.safetyNet.services.IJsonFileHandler;
+import com.openclassrooms.safetyNet.services.IPersonLastNameSercice;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,10 @@ import java.util.Optional;
 @Service
 public class PersonLastNameSercice implements IPersonLastNameSercice {
 
+    private final Logger logger = LogManager.getLogger(PersonLastNameSercice.class);
+
     @Autowired
-    JsonFileHandler jsonFileHandler;
+    IJsonFileHandler jsonFileHandler;
 
     @Autowired
     CalculateAgeService calculateAgeService;
@@ -26,6 +30,7 @@ public class PersonLastNameSercice implements IPersonLastNameSercice {
     @Override
     public List<PersonInfoLastnameDetail> getPersonInfoFromLastName(String lastName) throws IOException {
         DataJsonHandler jsonfile = jsonFileHandler.readJsonFile();
+        logger.debug("getPersonInfoFromLastName name : {} ", lastName);
 
         return jsonfile.getPersons().stream()
                 .filter(persons -> persons.getLastName().equalsIgnoreCase(lastName))
@@ -34,6 +39,8 @@ public class PersonLastNameSercice implements IPersonLastNameSercice {
                             .filter(record -> record.getFirstName().equalsIgnoreCase(person.getFirstName())
                                     && record.getLastName().equalsIgnoreCase(person.getLastName()))
                             .findFirst();
+                    logger.debug("medicalRecord obtenu a partir du firstname et lastname: {}", medicalRecord);
+
 
                     List<MedicalHistory> medicalHistories = medicalRecord
                             .map(mr -> {
@@ -41,6 +48,7 @@ public class PersonLastNameSercice implements IPersonLastNameSercice {
                                 if (!mr.getMedications().isEmpty() || !mr.getAllergies().isEmpty()) {
                                     histories.add(new MedicalHistory(mr.getMedications(), mr.getAllergies()));
                                 }
+                                logger.debug("Conditon medical retourne {}, pour {}", histories, person.getFirstName());
                                 return histories.isEmpty() ? null : histories;
                             })
                             .orElse(null);

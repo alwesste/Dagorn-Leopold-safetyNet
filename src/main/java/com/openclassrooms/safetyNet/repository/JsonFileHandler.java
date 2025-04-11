@@ -1,7 +1,7 @@
-package com.openclassrooms.safetyNet.utils;
+package com.openclassrooms.safetyNet.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetyNet.interfaces.IJsonFileHandler;
+import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -9,12 +9,8 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 
-
-// JsonFileHandler en static permet de sauver de la memoir par rapport a l'utilisation avec Autowired
-// permet de dire a java je veux acceder a cette methode sans la création d'une instance
 @Component
 public class JsonFileHandler implements IJsonFileHandler {
-
 
     @Value("${file.path}")
     public String filePath;

@@ -1,29 +1,31 @@
-package com.openclassrooms.safetyNet.services;
+package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.exceptions.FirestationNotFoundException;
-import com.openclassrooms.safetyNet.interfaces.IFireStationService;
-import com.openclassrooms.safetyNet.interfaces.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Firestations;
+import com.openclassrooms.safetyNet.models.Firestation;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.repository.FirestationRepository;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
+import com.openclassrooms.safetyNet.services.IFireStationService;
+import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
 public class FirestationsService implements IFireStationService {
 
-    private static final Logger logger = LogManager.getLogger(FirestationsService.class);
+    @Autowired
+    FirestationRepository firestationRepository;
+
+    private final Logger logger = LogManager.getLogger(FirestationRepository.class);
 
     @Autowired
     private IJsonFileHandler jsonFileHandler;
@@ -35,7 +37,7 @@ public class FirestationsService implements IFireStationService {
     public List<StationCover> getCoverPersons(int stationNumber) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
-        List<Firestations> fireStationList = jsonFile.getFirestations();
+        List<Firestation> fireStationList = jsonFile.getFirestations();
         List<Persons> personsList = jsonFile.getPersons();
         List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
         List<String> addresses = getAddressesByStation(fireStationList, stationNumber);
@@ -51,6 +53,7 @@ public class FirestationsService implements IFireStationService {
                     .findFirst();
 
             int age = medicalRecord.map(mr -> calculateAgeService.calculateAge(mr.getBirthdate())).orElse(0);
+            logger.debug("Age calcule sur les medicalRecord : {}", age);
 
 
             if (age >= 18) {
@@ -81,85 +84,77 @@ public class FirestationsService implements IFireStationService {
         return stationCoverList;
     }
 
-
     @Override
-    public List<String> getAddressesByStation(List<Firestations> fireStations, int stationNumber) {
-        return fireStations.stream()
+    public List<String> getAddressesByStation(List<Firestation> fireStations, int stationNumber) {
+        logger.debug("Liste des fireStation {}, et numero de station: {}", fireStations, stationNumber);
+
+        List<String> address = fireStations.stream()
                 .filter(fs -> fs.getStation().equals(String.valueOf(stationNumber)))
-                .map(Firestations::getAddress)
+                .map(Firestation::getAddress)
                 .toList();
+        logger.debug("Liste des differente adresse retrouver par numero de station : {}", address);
+
+        return address;
     }
 
     @Override
     public List<Persons> getPersonsByAddresses(List<Persons> persons, List<String> addresses) {
-        return persons.stream()
+        logger.debug("Nombre de liste de person: {}, et nombre de liste d'adresse: {}", persons.size(), addresses.size());
+
+        List<Persons> personsList = persons.stream()
                 .filter(person -> addresses.contains(person.getAddress()))
+
                 .toList();
+        logger.debug("Liste des differente personnes retrouver par adresse: {}", personsList);
+
+        return personsList;
     }
 
     @Override
     public List<String> getAddressfromStationNumber(int firestation) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        return jsonFile.getFirestations().stream()
+        logger.debug("Liste des numeros des fireStation {}", firestation);
+
+        List<String> address = jsonFile.getFirestations().stream()
                 .filter(sa -> sa.getStation().equals(String.valueOf(firestation)))
-                .map(Firestations::getAddress)
+                .map(Firestation::getAddress)
                 .toList();
+
+        logger.debug("Liste des differente adresse retrouver par firestation : {}", address);
+
+        return address;
     }
 
     @Override
     public List<PhoneNumber> getPhoneFromAddressFromStationNumber(List<String> stationAddress) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        return jsonFile.getPersons().stream()
+        logger.debug("Liste des adresses recupere {}", stationAddress);
+
+        Set<String> uniquePhones = new HashSet<>();
+
+        List<PhoneNumber> phoneNumbers = jsonFile.getPersons().stream()
                 .filter(pn -> stationAddress.contains(pn.getAddress()))
-                .map(pn -> new PhoneNumber(pn.getPhone()))
-                .distinct()
+                .map(Persons::getPhone)
+                .filter(uniquePhones::add)
+                .map(PhoneNumber::new)
                 .toList();
+        logger.debug("Liste des numeros de telephone: {}", phoneNumbers);
+
+        return phoneNumbers;
     }
 
     @Override
-    public void addFireStation(Firestations newFirestations) throws IOException {
-        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<Firestations> fireStationList = jsonFile.getFirestations();
-
-        fireStationList.add(newFirestations);
-        jsonFileHandler.writeJsonFile(jsonFile);
+    public void addFireStation(Firestation newFirestation) throws IOException {
+        firestationRepository.addFireStation(newFirestation);
     }
 
     @Override
-    public void modifyFireStation(Firestations firestationModified) throws IOException {
-        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<Firestations> fireStationList = jsonFile.getFirestations();
-
-        Optional<Firestations> oFirestationsToModify = fireStationList.stream()
-                .filter(firestations -> firestations.getAddress().equalsIgnoreCase(firestationModified.getAddress()))
-                .findFirst();
-
-
-        if (oFirestationsToModify.isPresent()) {
-            Firestations firestations = oFirestationsToModify.get(); //orElseGet()
-            firestations.setStation(firestationModified.getStation());
-        }
-
-        jsonFileHandler.writeJsonFile(jsonFile);
-
+    public void modifyFireStation(Firestation firestationModified) throws IOException {
+        firestationRepository.modifyFireStation(firestationModified);
     }
 
     @Override
-    public void deleteStation(Firestations firestationsToDelete) throws IOException, FirestationNotFoundException {
-
-        DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<Firestations> firestationsList = jsonFile.getFirestations();
-
-        boolean isRemoved = firestationsList.removeIf(firestations ->
-                firestations.getAddress().equalsIgnoreCase(firestationsToDelete.getAddress()) &&
-                        firestations.getStation().equalsIgnoreCase(firestationsToDelete.getStation())
-        );
-
-        if (!isRemoved) {
-            throw new FirestationNotFoundException("FireStation introuvable avec le prénom et le nom fournis.");
-        }
-
-        jsonFileHandler.writeJsonFile(jsonFile);
-
+    public void deleteStation(Firestation firestationToDelete) throws IOException, FirestationNotFoundException {
+        firestationRepository.deleteFireStation(firestationToDelete);
     }
 }

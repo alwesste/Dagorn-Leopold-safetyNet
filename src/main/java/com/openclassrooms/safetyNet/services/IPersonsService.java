@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.interfaces;
+package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
 import com.openclassrooms.safetyNet.models.Persons;

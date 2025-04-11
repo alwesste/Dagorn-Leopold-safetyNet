@@ -1,13 +1,13 @@
 package com.openclassrooms.safetyNet;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Firestations;
+import com.openclassrooms.safetyNet.models.Firestation;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
-import com.openclassrooms.safetyNet.services.CalculateAgeService;
-import com.openclassrooms.safetyNet.services.FireService;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
+import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
+import com.openclassrooms.safetyNet.services.impl.FireService;
+import com.openclassrooms.safetyNet.repository.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,8 +45,8 @@ public class FireServiceTest {
     public void setUp() throws IOException {
         mockdataJsonHandler = new DataJsonHandler();
 
-        Firestations firestations1 = new Firestations("1509 Culver St", "1");
-        List<Firestations> firestationsList = new ArrayList<>(List.of(firestations1));
+        Firestation firestation1 = new Firestation("1509 Culver St", "1");
+        List<Firestation> firestationList = new ArrayList<>(List.of(firestation1));
 
         Persons personJohn = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
 
@@ -55,7 +55,7 @@ public class FireServiceTest {
                 Collections.emptyList()
         );
 
-        mockdataJsonHandler.setFirestations(firestationsList);
+        mockdataJsonHandler.setFirestations(firestationList);
         mockdataJsonHandler.setPersons(List.of(personJohn));
         mockdataJsonHandler.setMedicalrecords(List.of(medicalRecordsOfJohn));
 

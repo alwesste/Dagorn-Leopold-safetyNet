@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.services.MedicalRecordsService;
+import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -21,19 +21,29 @@ public class MedicalRecordsController {
         this.medicalRecordsService = medicalRecordsService;
     }
 
+    /**
+     *
+     * @param medicalRecords L'objet MedicalRecords à ajouter
+     * @return Le dossier médical ajouté.
+     */
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public MedicalRecords addMedicalRecord(@RequestBody MedicalRecords medicalRecords) {
         logger.info("Requete addMedicalRecord reçue: {}", medicalRecords);
         try {
             medicalRecordsService.addMedicalRecord(medicalRecords);
-            logger.info("addMedicalRecord créée: {}", medicalRecords);
+            logger.info("Fin de la requete pour ajouter un medicalRecord: {}", medicalRecords);
         } catch (IOException e) {
             logger.error("Erreur lors de la création du nouveau medicalRecord: {}", e.getMessage());
         }
         return medicalRecords;
     }
 
+    /**
+     *
+     * @param medicalRecordToModify L'objet MedicalRecords contenant les nouvelles informations.
+     * @return Le dossier médical modifié.
+     */
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
     public MedicalRecords modifyMedicalRecord(@RequestBody MedicalRecords medicalRecordToModify) {
@@ -47,6 +57,11 @@ public class MedicalRecordsController {
         return medicalRecordToModify;
     }
 
+    /**
+     *
+     * @param medicalRecordToDelete L'objet MedicalRecords à supprimer.
+     * @return true si la suppression a réussi.
+     */
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
     public boolean deleteMedicalRecord(@RequestBody MedicalRecords medicalRecordToDelete) {

@@ -1,12 +1,14 @@
-package com.openclassrooms.safetyNet.services;
+package com.openclassrooms.safetyNet.services.impl;
 
-import com.openclassrooms.safetyNet.interfaces.IFloodService;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Firestations;
+import com.openclassrooms.safetyNet.models.Firestation;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.result.FloodHabitant;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
+import com.openclassrooms.safetyNet.services.IFloodService;
+import com.openclassrooms.safetyNet.services.IJsonFileHandler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,10 @@ import java.util.Optional;
 @Service
 public class FloodService implements IFloodService {
 
+    private final Logger logger= LogManager.getLogger(FloodService.class);
+
     @Autowired
-    JsonFileHandler jsonFileHandler;
+    IJsonFileHandler jsonFileHandler;
 
     @Autowired
     CalculateAgeService calculateAgeService;
@@ -30,8 +34,9 @@ public class FloodService implements IFloodService {
 
         List<String> addressFireStation = jsonFile.getFirestations().stream()
                 .filter(station -> stations.contains(station.getStation()))
-                .map(Firestations::getAddress)
+                .map(Firestation::getAddress)
                 .toList();
+        logger.debug("Adresse recuperer par adresse adresseFireStation: {}", addressFireStation);
 
 
         return jsonFile.getPersons().stream()
@@ -41,6 +46,7 @@ public class FloodService implements IFloodService {
                             .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName())
                                     && mr.getLastName().equalsIgnoreCase(person.getLastName()))
                             .findFirst();
+                    logger.debug("MedicalRecord obtenu : {} ", medicalRecord);
 
                     int age = medicalRecord
                             .map(mr -> calculateAgeService.calculateAge(mr.getBirthdate()))
@@ -49,6 +55,7 @@ public class FloodService implements IFloodService {
                     List<MedicalHistory> medicalHistories = medicalRecord
                             .map(mr -> List.of(new MedicalHistory(mr.getMedications(), mr.getAllergies())))
                             .orElse(new ArrayList<>());
+                    logger.debug("MedicalHistory obtenu : {} ", medicalHistories);
 
                     return new FloodHabitant(
                             person.getFirstName(),

@@ -1,6 +1,5 @@
 package com.openclassrooms.safetyNet.controller;
 
-import com.openclassrooms.safetyNet.controllers.DataControllers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -47,13 +46,11 @@ public class DataControllerTest {
         mockMvc.perform(get("/phoneAlert")
                         .param("firestation", "1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()").value(6))
+                .andExpect(jsonPath("$.size()").value(4))
                 .andExpect(jsonPath("$[0].phone").value("841-874-6512"))
                 .andExpect(jsonPath("$[1].phone").value("841-874-8547"))
                 .andExpect(jsonPath("$[2].phone").value("841-874-7462"))
-                .andExpect(jsonPath("$[3].phone").value("841-874-7784"))
-                .andExpect(jsonPath("$[4].phone").value("841-874-7784"))
-                .andExpect(jsonPath("$[5].phone").value("841-874-7784"));
+                .andExpect(jsonPath("$[3].phone").value("841-874-7784"));
     }
 
     @Test

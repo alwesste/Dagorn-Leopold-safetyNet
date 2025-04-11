@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.interfaces;
+package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
 import com.openclassrooms.safetyNet.models.MedicalRecords;

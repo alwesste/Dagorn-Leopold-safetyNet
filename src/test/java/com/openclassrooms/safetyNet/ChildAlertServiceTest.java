@@ -4,9 +4,9 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecords;
 import com.openclassrooms.safetyNet.models.Persons;
 import com.openclassrooms.safetyNet.result.ChildAlert;
-import com.openclassrooms.safetyNet.services.CalculateAgeService;
-import com.openclassrooms.safetyNet.services.ChildAlertService;
-import com.openclassrooms.safetyNet.utils.JsonFileHandler;
+import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
+import com.openclassrooms.safetyNet.services.impl.ChildAlertService;
+import com.openclassrooms.safetyNet.repository.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,7 +50,6 @@ public class ChildAlertServiceTest {
         Persons familyMember = new Persons("Tenley", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "tenz@email.com");
 
         List <Persons> personsList = new ArrayList<>(List.of(child, adult, familyMember));
-
 
         MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),

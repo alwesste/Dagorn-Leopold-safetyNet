@@ -14,4 +14,11 @@ public class PhoneNumber {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneNumber{" +
+                "phone='" + phone + '\'' +
+                '}';
+    }
 }

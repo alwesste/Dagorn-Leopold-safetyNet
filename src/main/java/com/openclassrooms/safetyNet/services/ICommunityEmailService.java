@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyNet.interfaces;
+package com.openclassrooms.safetyNet.services;
 
 import java.io.IOException;
 import java.util.List;
