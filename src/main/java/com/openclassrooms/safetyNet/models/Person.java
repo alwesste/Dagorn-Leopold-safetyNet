@@ -1,6 +1,6 @@
 package com.openclassrooms.safetyNet.models;
 
-public class Persons {
+public class Person {
     private String firstName;
     private String lastName;
     private String address;
@@ -9,10 +9,10 @@ public class Persons {
     private String phone;
     private String email;
 
-    public Persons() {
+    public Person() {
     }
 
-    public Persons(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
+    public Person(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;

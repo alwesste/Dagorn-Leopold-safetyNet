@@ -1,8 +1,8 @@
-package com.openclassrooms.safetyNet;
+package com.openclassrooms.safetyNet.service;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
 import com.openclassrooms.safetyNet.services.impl.ChildAlertService;
@@ -45,22 +45,22 @@ public class ChildAlertServiceTest {
     public void setUp() throws IOException {
         mockdataJsonHandler = new DataJsonHandler();
 
-        Persons child = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
-        Persons adult = new Persons("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
-        Persons familyMember = new Persons("Tenley", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "tenz@email.com");
+        Person child = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+        Person adult = new Person("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+        Person familyMember = new Person("Tenley", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "tenz@email.com");
 
-        List <Persons> personsList = new ArrayList<>(List.of(child, adult, familyMember));
+        List <Person> personsList = new ArrayList<>(List.of(child, adult, familyMember));
 
-        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "03/06/2020",
+        MedicalRecord medicalRecordsOfJohn = new MedicalRecord("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList()
         );
-        MedicalRecords medicalRecordsOfPeter = new MedicalRecords("Peter", "Duncan", "03/06/2000",
+        MedicalRecord medicalRecordsOfPeter = new MedicalRecord("Peter", "Duncan", "03/06/2000",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 List.of("allergies:illisoxian")
         );
 
-        List<MedicalRecords> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn, medicalRecordsOfPeter));
+        List<MedicalRecord> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn, medicalRecordsOfPeter));
 
 
         mockdataJsonHandler.setPersons(personsList);

@@ -1,8 +1,8 @@
 package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.result.FamilyMember;
 import com.openclassrooms.safetyNet.services.IChildAlertService;
@@ -34,11 +34,11 @@ public class ChildAlertService implements IChildAlertService {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         logger.debug("Donnees lues par jsonFileHandler,  nombre de personnes récupérées : {}", jsonFile.getPersons().size());
 
-        List<Persons> personByAddress = jsonFile.getPersons().stream().filter(person -> person.getAddress().equalsIgnoreCase(address)).toList();
+        List<Person> personByAddress = jsonFile.getPersons().stream().filter(person -> person.getAddress().equalsIgnoreCase(address)).toList();
         logger.debug("Nombre des personne par adresse {}", personByAddress.size());
 
         List<ChildAlert> children = personByAddress.stream().map(persons -> {
-            MedicalRecords medicalrecord = jsonFile.getMedicalrecords().stream().filter(mr -> mr.getFirstName().equalsIgnoreCase(persons.getFirstName()) && mr.getLastName().equalsIgnoreCase(persons.getLastName())).findFirst().orElse(null);
+            MedicalRecord medicalrecord = jsonFile.getMedicalrecords().stream().filter(mr -> mr.getFirstName().equalsIgnoreCase(persons.getFirstName()) && mr.getLastName().equalsIgnoreCase(persons.getLastName())).findFirst().orElse(null);
 
             if (medicalrecord != null) {
                 logger.debug("Medical Record de : {}, {}, ", medicalrecord.getLastName(), medicalrecord.getFirstName());

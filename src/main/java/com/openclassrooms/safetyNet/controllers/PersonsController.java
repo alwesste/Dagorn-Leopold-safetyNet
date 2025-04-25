@@ -1,6 +1,6 @@
 package com.openclassrooms.safetyNet.controllers;
 
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.services.impl.PersonsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +29,7 @@ public class PersonsController {
      */
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
-    public Persons addPerson(@RequestBody Persons persons) {
+    public Person addPerson(@RequestBody Person persons) {
         logger.info("Requête addPerson reçue: {}", persons);
         try {
             personsService.addPerson(persons);
@@ -48,7 +48,7 @@ public class PersonsController {
      */
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
-    public Persons modifyPerson(@RequestBody Persons persons) {
+    public Person modifyPerson(@RequestBody Person persons) {
         logger.info("Requête addPerson reçue: {}", persons);
         try {
             personsService.modifyPerson(persons);
@@ -67,7 +67,7 @@ public class PersonsController {
      */
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
-    public boolean deletePerson(@RequestBody Persons person) {
+    public boolean deletePerson(@RequestBody Person person) {
         logger.info("Requête addPerson reçue: {}", person);
         try {
             personsService.deletePerson(person);

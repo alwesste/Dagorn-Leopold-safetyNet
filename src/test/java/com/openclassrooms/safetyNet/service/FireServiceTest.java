@@ -1,9 +1,9 @@
-package com.openclassrooms.safetyNet;
+package com.openclassrooms.safetyNet.service;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestation;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
 import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
 import com.openclassrooms.safetyNet.services.impl.FireService;
@@ -48,9 +48,9 @@ public class FireServiceTest {
         Firestation firestation1 = new Firestation("1509 Culver St", "1");
         List<Firestation> firestationList = new ArrayList<>(List.of(firestation1));
 
-        Persons personJohn = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
+        Person personJohn = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
 
-        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John","Boyd","03/06/2020",
+        MedicalRecord medicalRecordsOfJohn = new MedicalRecord("John","Boyd","03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList()
         );

@@ -1,9 +1,9 @@
-package Repository;
+package com.openclassrooms.safetyNet.Repository;
 
 import com.openclassrooms.safetyNet.SafetyNetApplication;
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.repository.MedicalRecordsRepository;
 import com.openclassrooms.safetyNet.repository.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,10 +36,10 @@ public class MedicalRecordRepositoryTest {
     public void setUp() throws IOException {
         mockDataJsonHandler = new DataJsonHandler();
 
-        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "03/06/2020",
+        MedicalRecord medicalRecordsOfJohn = new MedicalRecord("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList());
-        List<MedicalRecords> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn));
+        List<MedicalRecord> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn));
 
         mockDataJsonHandler.setMedicalrecords(medicalRecordsList);
 
@@ -49,30 +49,30 @@ public class MedicalRecordRepositoryTest {
     @Test
     public void addMedicalRecordTest() throws IOException {
 
-        MedicalRecords medicalRecordsOfClara = new MedicalRecords("Clara", "Boyd", "04/11/2015",
+        MedicalRecord medicalRecordsOfClara = new MedicalRecord("Clara", "Boyd", "04/11/2015",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 List.of("allergies:illisoxian")
         );
 
         medicalRecordsRepository.addMedicalRecord(medicalRecordsOfClara);
 
-        List<MedicalRecords> allMedicalRecord = mockDataJsonHandler.getMedicalrecords();
+        List<MedicalRecord> allMedicalRecord = mockDataJsonHandler.getMedicalrecords();
         assertNotNull(allMedicalRecord, "La liste ne doit pas etre null");
         assertTrue(allMedicalRecord.contains(medicalRecordsOfClara));
     }
 
     @Test
     public void modifyMedicalRecordTest() throws IOException {
-        MedicalRecords newMedicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "01/01/2000",
+        MedicalRecord newMedicalRecordsOfJohn = new MedicalRecord("John", "Boyd", "01/01/2000",
                 Arrays.asList("pharmacolTest:5000mg", "terazineTest:10mg", "noznazolTest:250mg"),
                 Collections.emptyList());
 
         medicalRecordsRepository.modifyMedicalRecord(newMedicalRecordsOfJohn);
 
-        List<MedicalRecords> allMedicalRecord = mockDataJsonHandler.getMedicalrecords();
+        List<MedicalRecord> allMedicalRecord = mockDataJsonHandler.getMedicalrecords();
         assertNotNull(allMedicalRecord);
 
-        Optional<MedicalRecords> updatedMedicalRecord = allMedicalRecord.stream()
+        Optional<MedicalRecord> updatedMedicalRecord = allMedicalRecord.stream()
                 .filter(record -> "John".equals(record.getFirstName()) && "Boyd".equals(record.getLastName()))
                 .findFirst();
 
@@ -86,12 +86,12 @@ public class MedicalRecordRepositoryTest {
 
     @Test
     public void deleteMedicalRecodTest() throws IOException, MedicallRecordNotFoundException {
-        MedicalRecords medicalRecordsOfJohnToDelete = new MedicalRecords("John", "Boyd", "03/06/2020",
+        MedicalRecord medicalRecordsOfJohnToDelete = new MedicalRecord("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList());
 
         medicalRecordsRepository.deleteMedicalRecord(medicalRecordsOfJohnToDelete);
-        List<MedicalRecords> allMedicalRecord = mockDataJsonHandler.getMedicalrecords();
+        List<MedicalRecord> allMedicalRecord = mockDataJsonHandler.getMedicalrecords();
 
         assertFalse(allMedicalRecord.contains(medicalRecordsOfJohnToDelete));
     }

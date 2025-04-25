@@ -2,7 +2,7 @@ package com.openclassrooms.safetyNet.services;
 
 import com.openclassrooms.safetyNet.exceptions.FirestationNotFoundException;
 import com.openclassrooms.safetyNet.models.Firestation;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
 
@@ -43,7 +43,7 @@ public interface IFireStationService {
      * @param addresses La liste des adresses pour lesquelles les informations des personnes doivent être récupérées.
      * @return Une liste de personne correspondant aux adresses spécifiées.
      */
-    List<Persons> getPersonsByAddresses(List<Persons> persons, List<String> addresses);
+    List<Person> getPersonsByAddresses(List<Person> persons, List<String> addresses);
 
 
     /**

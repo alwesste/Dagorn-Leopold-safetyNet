@@ -1,8 +1,8 @@
-package com.openclassrooms.safetyNet;
+package com.openclassrooms.safetyNet.service;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
 import com.openclassrooms.safetyNet.result.PersonInfoLastnameDetail;
 import com.openclassrooms.safetyNet.services.impl.CalculateAgeService;
@@ -46,20 +46,20 @@ public class PersonLastNameServiceTest {
     public void setUp() throws IOException {
         mockDataJsonFileHandler = new DataJsonHandler();
 
-        Persons personJohn = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
-        Persons personClara = new Persons("Clara", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "Clara@email.com");
-        Persons personPaul = new Persons("Paul", "steph", "1509 Culver St", "Culver", "97451", "841-874-6512", "Paul@email.com");
-        List<Persons> personsList = new ArrayList<>(List.of(personJohn, personClara, personPaul));
+        Person personJohn = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
+        Person personClara = new Person("Clara", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "Clara@email.com");
+        Person personPaul = new Person("Paul", "steph", "1509 Culver St", "Culver", "97451", "841-874-6512", "Paul@email.com");
+        List<Person> personsList = new ArrayList<>(List.of(personJohn, personClara, personPaul));
 
-        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "03/06/2020",
+        MedicalRecord medicalRecordsOfJohn = new MedicalRecord("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList()
         );
-        MedicalRecords medicalRecordsOfClara = new MedicalRecords("Clara", "Boyd", "04/11/2015",
+        MedicalRecord medicalRecordsOfClara = new MedicalRecord("Clara", "Boyd", "04/11/2015",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 List.of("allergies:illisoxian")
         );
-        List<MedicalRecords> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn, medicalRecordsOfClara));
+        List<MedicalRecord> medicalRecordsList = new ArrayList<>(List.of(medicalRecordsOfJohn, medicalRecordsOfClara));
 
         when(jsonFileHandler.readJsonFile()).thenReturn(mockDataJsonFileHandler);
         lenient().when(calculateAgeService.calculateAge("03/06/2020")).thenReturn(5);

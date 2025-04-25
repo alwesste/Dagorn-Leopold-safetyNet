@@ -2,7 +2,7 @@ package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestation;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.result.FloodHabitant;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
 import com.openclassrooms.safetyNet.services.IFloodService;
@@ -42,7 +42,7 @@ public class FloodService implements IFloodService {
         return jsonFile.getPersons().stream()
                 .filter(persons -> addressFireStation.contains(persons.getAddress()))
                 .map(person -> {
-                    Optional<MedicalRecords> medicalRecord = jsonFile.getMedicalrecords().stream()
+                    Optional<MedicalRecord> medicalRecord = jsonFile.getMedicalrecords().stream()
                             .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName())
                                     && mr.getLastName().equalsIgnoreCase(person.getLastName()))
                             .findFirst();

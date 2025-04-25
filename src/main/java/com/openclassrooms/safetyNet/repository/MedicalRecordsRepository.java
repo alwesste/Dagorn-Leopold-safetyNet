@@ -4,7 +4,7 @@ import com.openclassrooms.safetyNet.exceptions.MedicalRecordExistException;
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,9 +30,9 @@ public class MedicalRecordsRepository{
      * @throws IOException, Si une erreur d'accès au fichier JSON survient.
      * @throws MedicalRecordExistException, Si un dossier médical avec le même prénom et nom existe déjà.
      */
-    public void addMedicalRecord(MedicalRecords newMedicalRecord) throws IOException {
+    public void addMedicalRecord(MedicalRecord newMedicalRecord) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
+        List<MedicalRecord> medicalRecordList = jsonFile.getMedicalrecords();
         logger.debug("Nouveau MedicalRecord à ajouter : {}", newMedicalRecord);
 
         boolean medicalRecordAlreadyExist = medicalRecordList.stream()
@@ -55,19 +55,19 @@ public class MedicalRecordsRepository{
      * @param medicalRecordsModified Le dossier médical modifié à enregistrer.
      * @throws IOException Si une erreur d'accès au fichier JSON survient.
      */
-    public void modifyMedicalRecord(MedicalRecords medicalRecordsModified) throws IOException {
+    public void modifyMedicalRecord(MedicalRecord medicalRecordsModified) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
+        List<MedicalRecord> medicalRecordList = jsonFile.getMedicalrecords();
         logger.debug("MedicalRecord modifie: {}", medicalRecordsModified);
 
-        Optional<MedicalRecords> recordToMofify = medicalRecordList.stream()
+        Optional<MedicalRecord> recordToMofify = medicalRecordList.stream()
                 .filter(medicalRecord ->
                         medicalRecord.getFirstName().equalsIgnoreCase(medicalRecordsModified.getFirstName()) &&
                         medicalRecord.getLastName().equalsIgnoreCase(medicalRecordsModified.getLastName()))
                 .findFirst();
 
         if (recordToMofify.isPresent()) {
-            MedicalRecords medicalRecord = recordToMofify.get();
+            MedicalRecord medicalRecord = recordToMofify.get();
             medicalRecord.setBirthdate(medicalRecordsModified.getBirthdate());
             medicalRecord.setMedications(medicalRecordsModified.getMedications());
             medicalRecord.setAllergies(medicalRecordsModified.getAllergies());
@@ -83,11 +83,11 @@ public class MedicalRecordsRepository{
      * @throws MedicallRecordNotFoundException Si aucun dossier ne correspond au prénom et nom donnés.
      * @throws IOException, Si une erreur d'accès au fichier JSON survient.
      */
-    public void deleteMedicalRecord(MedicalRecords medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
+    public void deleteMedicalRecord(MedicalRecord medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
         logger.debug("MedicalRecord to delete: {}", medicalRecordsToDelete);
 
-        List<MedicalRecords> medicalRecordList = jsonFile.getMedicalrecords();
+        List<MedicalRecord> medicalRecordList = jsonFile.getMedicalrecords();
         logger.debug("Liste des medicalRecord present : {}", medicalRecordList);
 
         boolean isRemoved = medicalRecordList.removeIf(medicalRecords ->

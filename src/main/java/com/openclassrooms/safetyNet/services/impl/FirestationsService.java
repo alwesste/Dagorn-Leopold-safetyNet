@@ -3,8 +3,8 @@ package com.openclassrooms.safetyNet.services.impl;
 import com.openclassrooms.safetyNet.exceptions.FirestationNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestation;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.repository.FirestationRepository;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
@@ -38,17 +38,17 @@ public class FirestationsService implements IFireStationService {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
         List<Firestation> fireStationList = jsonFile.getFirestations();
-        List<Persons> personsList = jsonFile.getPersons();
-        List<MedicalRecords> medicalRecordsList = jsonFile.getMedicalrecords();
+        List<Person> personsList = jsonFile.getPersons();
+        List<MedicalRecord> medicalRecordsList = jsonFile.getMedicalrecords();
         List<String> addresses = getAddressesByStation(fireStationList, stationNumber);
-        List<Persons> persons = getPersonsByAddresses(personsList, addresses);
+        List<Person> persons = getPersonsByAddresses(personsList, addresses);
         List<StationCover> stationCoverList = new ArrayList<>();
 
         int adultsCount = 0;
         int childrenCount = 0;
 
-        for (Persons person : persons) {
-            Optional<MedicalRecords> medicalRecord = medicalRecordsList.stream()
+        for (Person person : persons) {
+            Optional<MedicalRecord> medicalRecord = medicalRecordsList.stream()
                     .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName()) && mr.getLastName().equalsIgnoreCase(person.getLastName()))
                     .findFirst();
 
@@ -63,8 +63,8 @@ public class FirestationsService implements IFireStationService {
             }
         }
 
-        for (Persons person : persons) {
-            Optional<MedicalRecords> medicalRecord = medicalRecordsList.stream()
+        for (Person person : persons) {
+            Optional<MedicalRecord> medicalRecord = medicalRecordsList.stream()
                     .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName()) && mr.getLastName().equalsIgnoreCase(person.getLastName()))
                     .findFirst();
 
@@ -98,10 +98,10 @@ public class FirestationsService implements IFireStationService {
     }
 
     @Override
-    public List<Persons> getPersonsByAddresses(List<Persons> persons, List<String> addresses) {
+    public List<Person> getPersonsByAddresses(List<Person> persons, List<String> addresses) {
         logger.debug("Nombre de liste de person: {}, et nombre de liste d'adresse: {}", persons.size(), addresses.size());
 
-        List<Persons> personsList = persons.stream()
+        List<Person> personsList = persons.stream()
                 .filter(person -> addresses.contains(person.getAddress()))
 
                 .toList();
@@ -134,7 +134,7 @@ public class FirestationsService implements IFireStationService {
 
         List<PhoneNumber> phoneNumbers = jsonFile.getPersons().stream()
                 .filter(pn -> stationAddress.contains(pn.getAddress()))
-                .map(Persons::getPhone)
+                .map(Person::getPhone)
                 .filter(uniquePhones::add)
                 .map(PhoneNumber::new)
                 .toList();

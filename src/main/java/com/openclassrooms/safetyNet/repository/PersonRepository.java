@@ -2,9 +2,9 @@ package com.openclassrooms.safetyNet.repository;
 
 import com.openclassrooms.safetyNet.exceptions.PersonAlreadyExistException;
 import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Persons;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +29,10 @@ public class PersonRepository {
      * @throws IOException Si une erreur d'accès au fichier JSON survient.
      * @throws PersonAlreadyExistException Si une personne avec le même prénom et nom existe déjà.
      */
-    public void addPerson(Persons newPersonToAdd) throws IOException {
+    public void addPerson(Person newPersonToAdd) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
-        List<Persons> personList = jsonFile.getPersons();
+        List<Person> personList = jsonFile.getPersons();
         logger.debug("La liste de personne existante {}", personList);
 
         boolean personAlreadyExist = personList.stream()
@@ -56,20 +56,20 @@ public class PersonRepository {
      * @throws IOException Si une erreur d'accès au fichier JSON survient.
      * @throws PersonNotFoundException Si la personne à modifier n'est pas trouvée.
      */
-    public void modifyPerson(Persons personToModify) throws IOException, PersonNotFoundException {
+    public void modifyPerson(Person personToModify) throws IOException, PersonNotFoundException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
-        List<Persons> personList = jsonFile.getPersons();
+        List<Person> personList = jsonFile.getPersons();
         logger.debug("La liste de personne existante {}", personList);
 
 
-        Optional<Persons> persons = personList.stream()
+        Optional<Person> persons = personList.stream()
                 .filter(person ->
                         person.getFirstName().equalsIgnoreCase(personToModify.getFirstName()) &&
                                 person.getLastName().equalsIgnoreCase(personToModify.getLastName()))
                 .findFirst();
 
         if (persons.isPresent()) {
-            Persons person = persons.get();
+            Person person = persons.get();
             person.setAddress(personToModify.getAddress());
             person.setCity(personToModify.getCity());
             person.setZip(personToModify.getZip());
@@ -88,12 +88,12 @@ public class PersonRepository {
      * @throws PersonNotFoundException Si la personne à supprimer n'est pas trouvée.
      * @throws IOException Si une erreur d'accès au fichier JSON survient.
      */
-    public void deletePerson(Persons personToDelete) throws PersonNotFoundException, IOException {
+    public void deletePerson(Person personToDelete) throws PersonNotFoundException, IOException {
         try {
             DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
             logger.debug("La liste de personne existante {}", personToDelete);
 
-            List<Persons> personList = jsonFile.getPersons();
+            List<Person> personList = jsonFile.getPersons();
 
             boolean isRemoved = personList.removeIf(person ->
                     person.getFirstName().equals(personToDelete.getFirstName()) &&

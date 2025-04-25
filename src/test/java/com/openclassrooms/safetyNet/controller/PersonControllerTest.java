@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.services.impl.PersonsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,11 +27,11 @@ public class PersonControllerTest {
     @MockitoBean
     PersonsService personsService;
 
-    private Persons person;
+    private Person person;
 
     @BeforeEach
     void setUp() {
-        person = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
+        person = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
     }
 
     @Test

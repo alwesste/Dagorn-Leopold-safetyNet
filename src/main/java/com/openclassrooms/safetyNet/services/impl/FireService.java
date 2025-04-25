@@ -2,8 +2,8 @@ package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestation;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
 import com.openclassrooms.safetyNet.services.IFireService;
@@ -33,7 +33,7 @@ public class FireService implements IFireService {
     public List<FireHabitantDetails> getFireHabitantByAdress(String address) throws IOException {
         DataJsonHandler jsonFile = jsonFileHandler.readJsonFile();
 
-        List<Persons> personsAtAddress = jsonFile.getPersons().stream()
+        List<Person> personsAtAddress = jsonFile.getPersons().stream()
                 .filter(person -> person.getAddress().equalsIgnoreCase(address))
                 .toList();
         logger.debug("Noms des personnes à l'adresse {}: {}", address, personsAtAddress);
@@ -48,7 +48,7 @@ public class FireService implements IFireService {
 
         return personsAtAddress.stream()
                 .map(person -> {
-                    Optional<MedicalRecords> medicalRecord = jsonFile.getMedicalrecords().stream()
+                    Optional<MedicalRecord> medicalRecord = jsonFile.getMedicalrecords().stream()
                             .filter(mr -> mr.getFirstName().equalsIgnoreCase(person.getFirstName())
                                     && mr.getLastName().equalsIgnoreCase(person.getLastName()))
                             .findFirst();

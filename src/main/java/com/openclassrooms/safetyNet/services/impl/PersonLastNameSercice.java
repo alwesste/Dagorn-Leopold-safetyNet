@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
 import com.openclassrooms.safetyNet.result.PersonInfoLastnameDetail;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
@@ -35,7 +35,7 @@ public class PersonLastNameSercice implements IPersonLastNameSercice {
         return jsonfile.getPersons().stream()
                 .filter(persons -> persons.getLastName().equalsIgnoreCase(lastName))
                 .map(person -> {
-                    Optional<MedicalRecords> medicalRecord = jsonfile.getMedicalrecords().stream()
+                    Optional<MedicalRecord> medicalRecord = jsonfile.getMedicalrecords().stream()
                             .filter(record -> record.getFirstName().equalsIgnoreCase(person.getFirstName())
                                     && record.getLastName().equalsIgnoreCase(person.getLastName()))
                             .findFirst();

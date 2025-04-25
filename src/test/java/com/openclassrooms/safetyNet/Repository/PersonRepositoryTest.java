@@ -1,11 +1,11 @@
-package Repository;
+package com.openclassrooms.safetyNet.Repository;
 
 import com.openclassrooms.safetyNet.SafetyNetApplication;
 import com.openclassrooms.safetyNet.exceptions.PersonNotFoundException;
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.Firestation;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.repository.PersonRepository;
 import com.openclassrooms.safetyNet.repository.JsonFileHandler;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,10 +45,10 @@ public class PersonRepositoryTest {
         Firestation firestation1 = new Firestation("1509 Culver St", "1");
         List<Firestation> firestationList = new ArrayList<>(List.of(firestation1));
 
-        Persons personJohn = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
-        List <Persons> personsList = new ArrayList<>(List.of(personJohn));
+        Person personJohn = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
+        List <Person> personsList = new ArrayList<>(List.of(personJohn));
 
-        MedicalRecords medicalRecordsOfJohn = new MedicalRecords("John", "Boyd", "03/06/2020",
+        MedicalRecord medicalRecordsOfJohn = new MedicalRecord("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList()
         );
@@ -63,10 +63,10 @@ public class PersonRepositoryTest {
 
     @Test
     public void addPersonTest() throws IOException {
-        Persons newPersonToAdd = new Persons("Clara", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "Clara@email.com");
+        Person newPersonToAdd = new Person("Clara", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "Clara@email.com");
         personRepository.addPerson(newPersonToAdd);
 
-        List<Persons> personsList = jsonFileHandler.readJsonFile().getPersons();
+        List<Person> personsList = jsonFileHandler.readJsonFile().getPersons();
 
         // Vérifie si la personne ajoutée est bien dans la liste
         assertNotNull(personsList, "La liste des personnes n'est pas null");
@@ -75,11 +75,11 @@ public class PersonRepositoryTest {
 
     @Test
     public void modifyFireStation() throws IOException, PersonNotFoundException {
-        Persons updatePerson = new Persons("John", "Boyd", "new address", "new city", "11111", "111 111 1111", "Clara@email.com");
+        Person updatePerson = new Person("John", "Boyd", "new address", "new city", "11111", "111 111 1111", "Clara@email.com");
 
         personRepository.modifyPerson(updatePerson);
 
-        Persons modifiedPerson = mockDataJsonHandler.getPersons().stream()
+        Person modifiedPerson = mockDataJsonHandler.getPersons().stream()
                 .filter(p -> p.getFirstName().equals("John") && p.getLastName().equals("Boyd"))
                 .findFirst()
                 .orElse(null);
@@ -93,10 +93,10 @@ public class PersonRepositoryTest {
 
     @Test
     public void personToDelete() throws PersonNotFoundException, IOException {
-        Persons personToDelete = new Persons("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
+        Person personToDelete = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "John@email.com");
         personRepository.deletePerson(personToDelete);
 
-        List<Persons> allPersons = jsonFileHandler.readJsonFile().getPersons();
+        List<Person> allPersons = jsonFileHandler.readJsonFile().getPersons();
 
         assertFalse(allPersons.contains(personToDelete));
     }

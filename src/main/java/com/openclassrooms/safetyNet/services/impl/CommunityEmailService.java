@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.models.DataJsonHandler;
-import com.openclassrooms.safetyNet.models.Persons;
+import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.services.ICommunityEmailService;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +27,7 @@ public class CommunityEmailService implements ICommunityEmailService {
 
         List<String> emails = jsonFile.getPersons().stream()
                 .filter(person -> person.getCity().equalsIgnoreCase(city))
-                .map(Persons::getEmail)
+                .map(Person::getEmail)
                 .distinct()
                 .toList();
 

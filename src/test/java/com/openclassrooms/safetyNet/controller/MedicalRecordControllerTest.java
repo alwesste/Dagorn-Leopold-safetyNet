@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,11 +31,11 @@ public class MedicalRecordControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    private MedicalRecords medicalRecords;
+    private MedicalRecord medicalRecords;
 
     @BeforeEach
     void setUp() {
-        medicalRecords = new MedicalRecords("John", "Boyd", "03/06/2020",
+        medicalRecords = new MedicalRecord("John", "Boyd", "03/06/2020",
                 Arrays.asList("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"),
                 Collections.emptyList()
         );

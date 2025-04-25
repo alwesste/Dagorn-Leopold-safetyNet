@@ -3,18 +3,18 @@ package com.openclassrooms.safetyNet.models;
 import java.util.List;
 
 public class DataJsonHandler {
-    private List<Persons> persons;
+    private List<Person> persons;
     private List<Firestation> firestations;
-    private List<MedicalRecords> medicalrecords;
+    private List<MedicalRecord> medicalrecords;
 
     public DataJsonHandler() {
     }
 
-    public List<Persons> getPersons() {
+    public List<Person> getPersons() {
         return persons;
     }
 
-    public void setPersons(List<Persons> persons) {
+    public void setPersons(List<Person> persons) {
         this.persons = persons;
     }
 
@@ -26,11 +26,11 @@ public class DataJsonHandler {
         this.firestations = firestations;
     }
 
-    public List<MedicalRecords> getMedicalrecords() {
+    public List<MedicalRecord> getMedicalrecords() {
         return medicalrecords;
     }
 
-    public void setMedicalrecords(List<MedicalRecords> medicalrecords) {
+    public void setMedicalrecords(List<MedicalRecord> medicalrecords) {
         this.medicalrecords = medicalrecords;
     }
 }

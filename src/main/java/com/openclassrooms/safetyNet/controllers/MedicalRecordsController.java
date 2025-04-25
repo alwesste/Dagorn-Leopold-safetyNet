@@ -1,6 +1,6 @@
 package com.openclassrooms.safetyNet.controllers;
 
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +28,7 @@ public class MedicalRecordsController {
      */
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
-    public MedicalRecords addMedicalRecord(@RequestBody MedicalRecords medicalRecords) {
+    public MedicalRecord addMedicalRecord(@RequestBody MedicalRecord medicalRecords) {
         logger.info("Requete addMedicalRecord reçue: {}", medicalRecords);
         try {
             medicalRecordsService.addMedicalRecord(medicalRecords);
@@ -46,7 +46,7 @@ public class MedicalRecordsController {
      */
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     @PutMapping
-    public MedicalRecords modifyMedicalRecord(@RequestBody MedicalRecords medicalRecordToModify) {
+    public MedicalRecord modifyMedicalRecord(@RequestBody MedicalRecord medicalRecordToModify) {
         logger.info("Requete modifyMedicalRecord reçue: {}", medicalRecordToModify);
         try {
             medicalRecordsService.modifyMedicalRecord(medicalRecordToModify);
@@ -64,7 +64,7 @@ public class MedicalRecordsController {
      */
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping
-    public boolean deleteMedicalRecord(@RequestBody MedicalRecords medicalRecordToDelete) {
+    public boolean deleteMedicalRecord(@RequestBody MedicalRecord medicalRecordToDelete) {
         logger.info("Requete deleteMedicalRecord reçue: {}", medicalRecordToDelete);
         try {
             medicalRecordsService.deleteMedicalRecord(medicalRecordToDelete);

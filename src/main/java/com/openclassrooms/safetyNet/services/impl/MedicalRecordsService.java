@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyNet.services.impl;
 
 import com.openclassrooms.safetyNet.exceptions.MedicallRecordNotFoundException;
-import com.openclassrooms.safetyNet.models.MedicalRecords;
+import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.repository.MedicalRecordsRepository;
 import com.openclassrooms.safetyNet.services.IMedicalRecordsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ public class MedicalRecordsService implements IMedicalRecordsService {
     MedicalRecordsRepository medicalRecordsRepository;
 
     @Override
-    public void addMedicalRecord(MedicalRecords newMedicalRecord) throws IOException {
+    public void addMedicalRecord(MedicalRecord newMedicalRecord) throws IOException {
         medicalRecordsRepository.addMedicalRecord(newMedicalRecord);
     }
 
     @Override
-    public void modifyMedicalRecord(MedicalRecords medicalRecordsModified) throws IOException {
+    public void modifyMedicalRecord(MedicalRecord medicalRecordsModified) throws IOException {
         medicalRecordsRepository.modifyMedicalRecord(medicalRecordsModified);
     }
 
     @Override
-    public void deleteMedicalRecord(MedicalRecords medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
+    public void deleteMedicalRecord(MedicalRecord medicalRecordsToDelete) throws MedicallRecordNotFoundException, IOException {
         medicalRecordsRepository.deleteMedicalRecord(medicalRecordsToDelete);
     }
 }
