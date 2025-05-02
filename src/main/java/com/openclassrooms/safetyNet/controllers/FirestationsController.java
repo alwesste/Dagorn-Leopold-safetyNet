@@ -2,6 +2,7 @@ package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.models.Firestation;
 import com.openclassrooms.safetyNet.result.StationCover;
+import com.openclassrooms.safetyNet.services.IFireStationService;
 import com.openclassrooms.safetyNet.services.impl.FirestationsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,9 +19,9 @@ public class FirestationsController {
 
     private static final Logger logger = LogManager.getLogger(FirestationsController.class);
 
-    private final FirestationsService firestationsService;
+    private final IFireStationService firestationsService;
 
-    public FirestationsController(FirestationsService firestationsService) {
+    public FirestationsController(IFireStationService firestationsService) {
         this.firestationsService = firestationsService;
     }
 
@@ -35,8 +36,7 @@ public class FirestationsController {
     public List<StationCover> getPersonsCoverByFireStation(@RequestParam("stationNumber") int stationNumber) throws IOException {
         logger.info("Requête reçue pour obtenir les personnes couvertes par la station {}", stationNumber);
         try {
-            List<StationCover> result = firestationsService.getCoverPersons(stationNumber);
-            return result;
+            return firestationsService.getCoverPersons(stationNumber);
         } catch (IOException e) {
             logger.error("Erreur lors de l'obtention des personnes couvertes par la station {} : {}", stationNumber, e.getMessage());
             throw e;

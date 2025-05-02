@@ -4,6 +4,7 @@ import com.openclassrooms.safetyNet.models.DataJsonHandler;
 import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
 import com.openclassrooms.safetyNet.result.PersonInfoLastnameDetail;
+import com.openclassrooms.safetyNet.services.ICalculateAgeService;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import com.openclassrooms.safetyNet.services.IPersonLastNameSercice;
 import org.apache.logging.log4j.LogManager;
@@ -25,7 +26,7 @@ public class PersonLastNameSercice implements IPersonLastNameSercice {
     IJsonFileHandler jsonFileHandler;
 
     @Autowired
-    CalculateAgeService calculateAgeService;
+    ICalculateAgeService calculateAgeService;
 
     @Override
     public List<PersonInfoLastnameDetail> getPersonInfoFromLastName(String lastName) throws IOException {

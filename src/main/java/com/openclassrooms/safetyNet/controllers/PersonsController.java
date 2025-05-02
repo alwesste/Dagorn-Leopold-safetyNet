@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.models.Person;
+import com.openclassrooms.safetyNet.services.IPersonsService;
 import com.openclassrooms.safetyNet.services.impl.PersonsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,9 +16,9 @@ public class PersonsController {
 
     private static final Logger logger = LogManager.getLogger(PersonsController.class);
 
-    private final PersonsService personsService;
+    private final IPersonsService personsService;
 
-    public PersonsController(PersonsService personsService) {
+    public PersonsController(IPersonsService personsService) {
         this.personsService = personsService;
     }
 

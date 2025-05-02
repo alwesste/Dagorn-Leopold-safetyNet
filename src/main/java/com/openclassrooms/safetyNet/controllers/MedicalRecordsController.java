@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.models.MedicalRecord;
+import com.openclassrooms.safetyNet.services.IMedicalRecordsService;
 import com.openclassrooms.safetyNet.services.impl.MedicalRecordsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,9 +16,9 @@ public class MedicalRecordsController {
 
     private static final Logger logger = LogManager.getLogger(MedicalRecordsController.class);
 
-    private final MedicalRecordsService medicalRecordsService;
+    private final IMedicalRecordsService medicalRecordsService;
 
-    public MedicalRecordsController(MedicalRecordsService medicalRecordsService) {
+    public MedicalRecordsController(IMedicalRecordsService medicalRecordsService) {
         this.medicalRecordsService = medicalRecordsService;
     }
 

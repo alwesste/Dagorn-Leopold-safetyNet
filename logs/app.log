@@ -8629,3 +8629,481 @@ Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionExcep
 2025-04-25 14:41:18 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.MedicalRecordsService - MedicalRecord to delete: MedicalRecords{firstName='leo', lastName='dag', birthdate='03/06/1984', medications=[aznol:350mg, hydrapermazol:100mg], allergies=[]}
 2025-04-25 14:41:18 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.MedicalRecordsService - Liste des medicalRecord present : [MedicalRecords{firstName='John', lastName='Boyd', birthdate='03/06/1984', medications=[aznol:350mg, hydrapermazol:100mg], allergies=[nillacilan]}, MedicalRecords{firstName='Jacob', lastName='Boyd', birthdate='03/06/1989', medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg], allergies=[]}, MedicalRecords{firstName='Tenley', lastName='Boyd', birthdate='02/18/2012', medications=[], allergies=[peanut]}, MedicalRecords{firstName='Roger', lastName='Boyd', birthdate='09/06/2017', medications=[], allergies=[]}, MedicalRecords{firstName='Felicia', lastName='Boyd', birthdate='01/08/1986', medications=[tetracyclaz:650mg], allergies=[xilliathal]}, MedicalRecords{firstName='Jonanathan', lastName='Marrack', birthdate='01/03/1989', medications=[], allergies=[]}, MedicalRecords{firstName='Tessa', lastName='Carman', birthdate='02/18/2012', medications=[], allergies=[]}, MedicalRecords{firstName='Peter', lastName='Duncan', birthdate='09/06/2000', medications=[], allergies=[shellfish]}, MedicalRecords{firstName='Foster', lastName='Shepard', birthdate='01/08/1980', medications=[], allergies=[]}, MedicalRecords{firstName='Tony', lastName='Cooper', birthdate='03/06/1994', medications=[hydrapermazol:300mg, dodoxadin:30mg], allergies=[shellfish]}, MedicalRecords{firstName='Lily', lastName='Cooper', birthdate='03/06/1994', medications=[], allergies=[]}, MedicalRecords{firstName='Sophia', lastName='Zemicks', birthdate='03/06/1988', medications=[aznol:60mg, hydrapermazol:900mg, pharmacol:5000mg, terazine:500mg], allergies=[peanut, shellfish, aznol]}, MedicalRecords{firstName='Warren', lastName='Zemicks', birthdate='03/06/1985', medications=[], allergies=[]}, MedicalRecords{firstName='Zach', lastName='Zemicks', birthdate='03/06/2017', medications=[], allergies=[]}, MedicalRecords{firstName='Reginold', lastName='Walker', birthdate='08/30/1979', medications=[thradox:700mg], allergies=[illisoxian]}, MedicalRecords{firstName='Jamie', lastName='Peters', birthdate='03/06/1982', medications=[], allergies=[]}, MedicalRecords{firstName='Ron', lastName='Peters', birthdate='04/06/1965', medications=[], allergies=[]}, MedicalRecords{firstName='Allison', lastName='Boyd', birthdate='03/15/1965', medications=[aznol:200mg], allergies=[nillacilan]}, MedicalRecords{firstName='Brian', lastName='Stelzer', birthdate='12/06/1975', medications=[ibupurin:200mg, hydrapermazol:400mg], allergies=[nillacilan]}, MedicalRecords{firstName='Shawna', lastName='Stelzer', birthdate='07/08/1980', medications=[], allergies=[]}, MedicalRecords{firstName='Kendrik', lastName='Stelzer', birthdate='03/06/2014', medications=[noxidian:100mg, pharmacol:2500mg], allergies=[]}, MedicalRecords{firstName='Clive', lastName='Ferguson', birthdate='03/06/1994', medications=[], allergies=[]}, MedicalRecords{firstName='Eric', lastName='Cadigan', birthdate='08/06/1945', medications=[tradoxidine:400mg], allergies=[]}, MedicalRecords{firstName='leo', lastName='dag', birthdate='03/06/1984', medications=[aznol:350mg, hydrapermazol:100mg], allergies=[]}]
 2025-04-25 14:41:18 [http-nio-8080-exec-1] INFO  com.openclassrooms.safetyNet.controllers.MedicalRecordsController - MedicalRecord supprime
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:20:33 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:20:33 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpMediaTypeNotAcceptableException: No acceptable representation]
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:21:52 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:22:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:22:04 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:22:27 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:22:36 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:22:43 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:23:02 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:23:06 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:23:25 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:24:15 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:25:25 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:25:25 [http-nio-8080-exec-9] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpMediaTypeNotAcceptableException: No acceptable representation]
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:25:35 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:26:08 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:26:14 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:26:22 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:27:43 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:29:06 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:29:43 [http-nio-8080-exec-10] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:32:43 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:32:48 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:33:00 [http-nio-8080-exec-7] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:33:01 [http-nio-8080-exec-8] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:33:07 [http-nio-8080-exec-9] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:35:45 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:35:51 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:36:04 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-25 17:36:04 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-04-25 17:36:12 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 25488 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-04-25 17:36:12 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-25 17:36:13 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-04-25 17:36:13 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-25 17:36:13 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-25 17:36:13 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-25 17:36:13 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-25 17:36:13 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1398 ms
+2025-04-25 17:36:14 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-04-25 17:36:14 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-04-25 17:36:14 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 2.464 seconds (process running for 3.726)
+2025-04-25 17:36:15 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-25 17:36:15 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-25 17:36:15 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:36:15 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:36:17 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:36:55 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-25 17:36:55 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-04-25 17:37:02 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 18856 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-04-25 17:37:02 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-25 17:37:03 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-04-25 17:37:03 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-25 17:37:03 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-25 17:37:03 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-25 17:37:03 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-25 17:37:03 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1155 ms
+2025-04-25 17:37:04 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-04-25 17:37:04 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-04-25 17:37:04 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 2.149 seconds (process running for 3.141)
+2025-04-25 17:37:14 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-25 17:37:14 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-25 17:37:14 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:37:14 [http-nio-8080-exec-1] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:37:16 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-25 17:37:45 [http-nio-8080-exec-6] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-25 18:15:22 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-25 18:15:22 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-04-26 15:17:32 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 19228 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-04-26 15:17:32 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-26 15:17:33 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-04-26 15:17:33 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-26 15:17:33 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-26 15:17:33 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-26 15:17:33 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-26 15:17:33 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1360 ms
+2025-04-26 15:17:34 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-04-26 15:17:34 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-04-26 15:17:34 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 2.617 seconds (process running for 4.216)
+2025-04-26 15:17:35 [http-nio-8080-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-26 15:17:35 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-26 15:17:35 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Nombre des personne par adresse 3
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Tenley, 
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 13
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Roger, 
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 7
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Medical Record de : Boyd, Felicia, 
+2025-04-26 15:17:35 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.ChildAlertService - Age recuperer par date d'anniversaire dans les medicalRecord 39
+2025-04-26 15:17:44 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.CommunityEmailService - Donnees lues par jsonFileHandler,  nombre de personnes récupérées : 22
+2025-04-26 15:17:44 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.services.impl.CommunityEmailService - Liste d'emails distincts extraits pour la ville Culver : [drk@email.com, tenz@email.com, jaboyd@email.com, tcoop@ymail.com, lily@email.com, soph@email.com, ward@email.com, zarc@email.com, reg@email.com, jpeter@email.com, aly@imail.com, bstel@email.com, ssanw@email.com, clivfd@ymail.com, gramps@email.com]
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - getPersonInfoFromLastName name : Boyd 
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Jacob', lastName='Boyd', birthdate='03/06/1989', medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg], allergies=[]}]
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[pharmacol:5000mg, terazine:10mg, noznazol:250mg], allergie=[]}], pour Jacob
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Tenley', lastName='Boyd', birthdate='02/18/2012', medications=[], allergies=[peanut]}]
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[], allergie=[peanut]}], pour Tenley
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Roger', lastName='Boyd', birthdate='09/06/2017', medications=[], allergies=[]}]
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [], pour Roger
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Felicia', lastName='Boyd', birthdate='01/08/1986', medications=[tetracyclaz:650mg], allergies=[xilliathal]}]
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[tetracyclaz:650mg], allergie=[xilliathal]}], pour Felicia
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Allison', lastName='Boyd', birthdate='03/15/1965', medications=[aznol:200mg], allergies=[nillacilan]}]
+2025-04-26 15:17:49 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[aznol:200mg], allergie=[nillacilan]}], pour Allison
+2025-05-02 11:24:20 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 30332 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-05-02 11:24:20 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-02 11:24:21 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-02 11:24:21 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:24:21 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-02 11:24:21 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-02 11:24:21 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-02 11:24:21 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 999 ms
+2025-05-02 11:24:21 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:24:21 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-02 11:24:21 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 1.855 seconds (process running for 2.902)
+2025-05-02 11:24:56 [http-nio-8080-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-02 11:24:56 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-02 11:24:56 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - getPersonInfoFromLastName name : Boyd 
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Jacob', lastName='Boyd', birthdate='03/06/1989', medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg], allergies=[]}]
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[pharmacol:5000mg, terazine:10mg, noznazol:250mg], allergie=[]}], pour Jacob
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Tenley', lastName='Boyd', birthdate='02/18/2012', medications=[], allergies=[peanut]}]
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[], allergie=[peanut]}], pour Tenley
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Roger', lastName='Boyd', birthdate='09/06/2017', medications=[], allergies=[]}]
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [], pour Roger
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Felicia', lastName='Boyd', birthdate='01/08/1986', medications=[tetracyclaz:650mg], allergies=[xilliathal]}]
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[tetracyclaz:650mg], allergie=[xilliathal]}], pour Felicia
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - medicalRecord obtenu a partir du firstname et lastname: Optional[MedicalRecords{firstName='Allison', lastName='Boyd', birthdate='03/15/1965', medications=[aznol:200mg], allergies=[nillacilan]}]
+2025-05-02 11:24:56 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.PersonLastNameSercice - Conditon medical retourne [MedicalHistory{medicine=[aznol:200mg], allergie=[nillacilan]}], pour Allison
+2025-05-02 11:52:24 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-02 11:52:24 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-02 11:52:29 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 12404 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-05-02 11:52:29 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-02 11:52:30 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-02 11:52:30 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:52:30 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-02 11:52:30 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-02 11:52:30 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-02 11:52:30 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1097 ms
+2025-05-02 11:52:30 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:52:30 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-02 11:52:30 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 1.983 seconds (process running for 2.813)
+2025-05-02 11:52:37 [http-nio-8080-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-02 11:52:37 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-02 11:52:37 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - Adresse recuperer par adresse adresseFireStation: [29 15th St, 644 Gershwin Cir, 892 Downing Ct, 908 73rd St, 947 E. Rose Dr, 951 LoneTree Rd]
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Jonanathan', lastName='Marrack', birthdate='01/03/1989', medications=[], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[], allergie=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Peter', lastName='Duncan', birthdate='09/06/2000', medications=[], allergies=[shellfish]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[], allergie=[shellfish]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Sophia', lastName='Zemicks', birthdate='03/06/1988', medications=[aznol:60mg, hydrapermazol:900mg, pharmacol:5000mg, terazine:500mg], allergies=[peanut, shellfish, aznol]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[aznol:60mg, hydrapermazol:900mg, pharmacol:5000mg, terazine:500mg], allergie=[peanut, shellfish, aznol]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Warren', lastName='Zemicks', birthdate='03/06/1985', medications=[], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[], allergie=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Zach', lastName='Zemicks', birthdate='03/06/2017', medications=[], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[], allergie=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Reginold', lastName='Walker', birthdate='08/30/1979', medications=[thradox:700mg], allergies=[illisoxian]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[thradox:700mg], allergie=[illisoxian]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Jamie', lastName='Peters', birthdate='03/06/1982', medications=[], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[], allergie=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Brian', lastName='Stelzer', birthdate='12/06/1975', medications=[ibupurin:200mg, hydrapermazol:400mg], allergies=[nillacilan]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[ibupurin:200mg, hydrapermazol:400mg], allergie=[nillacilan]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Shawna', lastName='Stelzer', birthdate='07/08/1980', medications=[], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[], allergie=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Kendrik', lastName='Stelzer', birthdate='03/06/2014', medications=[noxidian:100mg, pharmacol:2500mg], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[noxidian:100mg, pharmacol:2500mg], allergie=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalRecord obtenu : Optional[MedicalRecords{firstName='Eric', lastName='Cadigan', birthdate='08/06/1945', medications=[tradoxidine:400mg], allergies=[]}] 
+2025-05-02 11:52:37 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.services.impl.FloodService - MedicalHistory obtenu : [MedicalHistory{medicine=[tradoxidine:400mg], allergie=[]}] 
+2025-05-02 11:52:55 [http-nio-8080-exec-3] INFO  com.openclassrooms.safetyNet.controllers.PersonsController - Requête addPerson reçue: Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:52:55 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.repository.PersonRepository - La liste de personne existante [Persons{firstName='Jacob', lastName='Boyd', address='1509 Culver `St', phone='841-874-6513', email='drk@email.com'}, Persons{firstName='Tenley', lastName='Boyd', address='1509 Culver St', phone='841-874-6512', email='tenz@email.com'}, Persons{firstName='Roger', lastName='Boyd', address='1509 Culver St', phone='841-874-6512', email='jaboyd@email.com'}, Persons{firstName='Felicia', lastName='Boyd', address='1509 Culver St', phone='841-874-6544', email='jaboyd@email.com'}, Persons{firstName='Jonanathan', lastName='Marrack', address='29 15th St', phone='841-874-6513', email='drk@email.com'}, Persons{firstName='Tessa', lastName='Carman', address='834 Binoc Ave', phone='841-874-6512', email='tenz@email.com'}, Persons{firstName='Peter', lastName='Duncan', address='644 Gershwin Cir', phone='841-874-6512', email='jaboyd@email.com'}, Persons{firstName='Foster', lastName='Shepard', address='748 Townings Dr', phone='841-874-6544', email='jaboyd@email.com'}, Persons{firstName='Tony', lastName='Cooper', address='112 Steppes Pl', phone='841-874-6874', email='tcoop@ymail.com'}, Persons{firstName='Lily', lastName='Cooper', address='489 Manchester St', phone='841-874-9845', email='lily@email.com'}, Persons{firstName='Sophia', lastName='Zemicks', address='892 Downing Ct', phone='841-874-7878', email='soph@email.com'}, Persons{firstName='Warren', lastName='Zemicks', address='892 Downing Ct', phone='841-874-7512', email='ward@email.com'}, Persons{firstName='Zach', lastName='Zemicks', address='892 Downing Ct', phone='841-874-7512', email='zarc@email.com'}, Persons{firstName='Reginold', lastName='Walker', address='908 73rd St', phone='841-874-8547', email='reg@email.com'}, Persons{firstName='Jamie', lastName='Peters', address='908 73rd St', phone='841-874-7462', email='jpeter@email.com'}, Persons{firstName='Ron', lastName='Peters', address='112 Steppes Pl', phone='841-874-8888', email='jpeter@email.com'}, Persons{firstName='Allison', lastName='Boyd', address='112 Steppes Pl', phone='841-874-9888', email='aly@imail.com'}, Persons{firstName='Brian', lastName='Stelzer', address='947 E. Rose Dr', phone='841-874-7784', email='bstel@email.com'}, Persons{firstName='Shawna', lastName='Stelzer', address='947 E. Rose Dr', phone='841-874-7784', email='ssanw@email.com'}, Persons{firstName='Kendrik', lastName='Stelzer', address='947 E. Rose Dr', phone='841-874-7784', email='bstel@email.com'}, Persons{firstName='Clive', lastName='Ferguson', address='748 Townings Dr', phone='841-874-6741', email='clivfd@ymail.com'}, Persons{firstName='Eric', lastName='Cadigan', address='951 LoneTree Rd', phone='841-874-7458', email='gramps@email.com'}]
+2025-05-02 11:52:55 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.repository.PersonRepository - Person a ajouter: Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:52:55 [http-nio-8080-exec-3] INFO  com.openclassrooms.safetyNet.controllers.PersonsController - Fin de la requete de creation de person: Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:53:18 [http-nio-8080-exec-4] INFO  com.openclassrooms.safetyNet.controllers.PersonsController - Requête addPerson reçue: Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:53:18 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.PersonRepository - La liste de personne existante Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:53:18 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.PersonRepository - Peronne a supprimer Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:53:18 [http-nio-8080-exec-4] INFO  com.openclassrooms.safetyNet.controllers.PersonsController - Person supprime: Persons{firstName='leopold', lastName='Boyd', address='1509 Culver St', phone='841-874-6513', email='drk@email.com'}
+2025-05-02 11:54:40 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-02 11:54:40 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-02 11:54:44 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 26056 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-05-02 11:54:44 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-02 11:54:45 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-02 11:54:45 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:54:45 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-02 11:54:45 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-02 11:54:45 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-02 11:54:45 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1131 ms
+2025-05-02 11:54:45 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:54:45 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-02 11:54:45 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 2.103 seconds (process running for 3.147)
+2025-05-02 11:55:23 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-02 11:55:23 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-02 11:55:26 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 29840 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-05-02 11:55:26 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-02 11:55:27 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-02 11:55:27 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:55:27 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-02 11:55:27 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-02 11:55:27 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-02 11:55:27 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 969 ms
+2025-05-02 11:55:27 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-02 11:55:27 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-02 11:55:27 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 1.79 seconds (process running for 2.602)
+2025-05-02 11:55:36 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-02 11:55:36 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-02 12:26:15 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 9936 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-05-02 12:26:15 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-02 12:26:16 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-02 12:26:16 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-02 12:26:16 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-02 12:26:16 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-02 12:26:16 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-02 12:26:16 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 944 ms
+2025-05-02 12:26:16 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-02 12:26:16 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-02 12:26:16 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 1.783 seconds (process running for 2.673)
+2025-05-02 12:26:18 [http-nio-8080-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-02 12:26:18 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-02 12:26:18 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-02 12:26:18 [http-nio-8080-exec-2] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - Requete addFireStation reçue, newFireStation Firestations{address='111 LoneTree Rd', station='999'}
+2025-05-02 12:26:18 [http-nio-8080-exec-2] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - La nouvelle FireStationa a ajouter: Firestations{address='111 LoneTree Rd', station='999'}
+2025-05-02 12:26:18 [http-nio-8080-exec-2] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - Fin de la requete pour firestation: Firestations{address='111 LoneTree Rd', station='999'}
+2025-05-02 12:26:41 [http-nio-8080-exec-3] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' is not supported]
+2025-05-02 12:27:03 [http-nio-8080-exec-4] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - Requete modifyStation reçue: Firestations{address='111 LoneTree Rd', station='899'}
+2025-05-02 12:27:03 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Station a modifie Optional[Firestations{address='111 LoneTree Rd', station='999'}]
+2025-05-02 12:27:03 [http-nio-8080-exec-4] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - fireStation modifie: Firestations{address='111 LoneTree Rd', station='899'}
+2025-05-02 12:27:14 [http-nio-8080-exec-5] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - Requete deleteStation reçue: Firestations{address='111 LoneTree Rd', station='899'}
+2025-05-02 12:27:14 [http-nio-8080-exec-5] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - FireStation a Supprimer: Firestations{address='111 LoneTree Rd', station='899'}
+2025-05-02 12:27:14 [http-nio-8080-exec-5] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - fireStation supprime: Firestations{address='111 LoneTree Rd', station='899'}
+2025-05-02 12:31:51 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-02 12:31:51 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-02 12:31:55 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Starting SafetyNetApplication using Java 21.0.5 with PID 17108 (C:\document\Java Openclassrooms\Projet 5\safetyNet\target\classes started by leopo in C:\document\Java Openclassrooms\Projet 5\safetyNet)
+2025-05-02 12:31:55 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-02 12:31:56 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-02 12:31:56 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-02 12:31:56 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-02 12:31:56 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-02 12:31:56 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-02 12:31:56 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 980 ms
+2025-05-02 12:31:56 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-02 12:31:56 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-02 12:31:56 [main] INFO  com.openclassrooms.safetyNet.SafetyNetApplication - Started SafetyNetApplication in 1.92 seconds (process running for 3.022)
+2025-05-02 12:32:04 [http-nio-8080-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-02 12:32:04 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-02 12:32:04 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-02 12:32:04 [http-nio-8080-exec-2] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - Requete deleteStation reçue: Firestations{address='111 LoneTree Rd', station='899'}
+2025-05-02 12:32:04 [http-nio-8080-exec-2] ERROR com.openclassrooms.safetyNet.controllers.FirestationsController - La suppression à échoué: FireStation introuvable avec le prénom et le nom fournis.
+2025-05-02 12:32:14 [http-nio-8080-exec-4] INFO  com.openclassrooms.safetyNet.controllers.FirestationsController - Requête reçue pour obtenir les personnes couvertes par la station 1
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des fireStation [Firestations{address='29 15th St', station='2'}, Firestations{address='834 Binoc Ave', station='3'}, Firestations{address='644 Gershwin Cir', station='1'}, Firestations{address='748 Townings Dr', station='3'}, Firestations{address='112 Steppes Pl', station='3'}, Firestations{address='489 Manchester St', station='4'}, Firestations{address='892 Downing Ct', station='2'}, Firestations{address='908 73rd St', station='1'}, Firestations{address='112 Steppes Pl', station='4'}, Firestations{address='947 E. Rose Dr', station='1'}, Firestations{address='748 Townings Dr', station='3'}, Firestations{address='951 LoneTree Rd', station='2'}], et numero de station: 1
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des differente adresse retrouver par numero de station : [644 Gershwin Cir, 908 73rd St, 947 E. Rose Dr]
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Nombre de liste de person: 22, et nombre de liste d'adresse: 3
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des differente personnes retrouver par adresse: [Persons{firstName='Peter', lastName='Duncan', address='644 Gershwin Cir', phone='841-874-6512', email='jaboyd@email.com'}, Persons{firstName='Reginold', lastName='Walker', address='908 73rd St', phone='841-874-8547', email='reg@email.com'}, Persons{firstName='Jamie', lastName='Peters', address='908 73rd St', phone='841-874-7462', email='jpeter@email.com'}, Persons{firstName='Brian', lastName='Stelzer', address='947 E. Rose Dr', phone='841-874-7784', email='bstel@email.com'}, Persons{firstName='Shawna', lastName='Stelzer', address='947 E. Rose Dr', phone='841-874-7784', email='ssanw@email.com'}, Persons{firstName='Kendrik', lastName='Stelzer', address='947 E. Rose Dr', phone='841-874-7784', email='bstel@email.com'}]
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Age calcule sur les medicalRecord : 24
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Age calcule sur les medicalRecord : 45
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Age calcule sur les medicalRecord : 43
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Age calcule sur les medicalRecord : 49
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Age calcule sur les medicalRecord : 44
+2025-05-02 12:32:14 [http-nio-8080-exec-4] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Age calcule sur les medicalRecord : 11
+2025-05-02 12:32:24 [http-nio-8080-exec-3] INFO  com.openclassrooms.safetyNet.controllers.DataController - Requête reçue pour obtenir numero de telephones couvert par la station numero: 1
+2025-05-02 12:32:24 [http-nio-8080-exec-3] INFO  com.openclassrooms.safetyNet.controllers.DataController - Requete recue
+2025-05-02 12:32:24 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des numeros des fireStation 1
+2025-05-02 12:32:24 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des differente adresse retrouver par firestation : [644 Gershwin Cir, 908 73rd St, 947 E. Rose Dr]
+2025-05-02 12:32:24 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des adresses recupere [644 Gershwin Cir, 908 73rd St, 947 E. Rose Dr]
+2025-05-02 12:32:24 [http-nio-8080-exec-3] DEBUG com.openclassrooms.safetyNet.repository.FirestationRepository - Liste des numeros de telephone: [PhoneNumber{phone='841-874-6512'}, PhoneNumber{phone='841-874-8547'}, PhoneNumber{phone='841-874-7462'}, PhoneNumber{phone='841-874-7784'}]

@@ -6,6 +6,7 @@ import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.FireHabitantDetails;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
+import com.openclassrooms.safetyNet.services.ICalculateAgeService;
 import com.openclassrooms.safetyNet.services.IFireService;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +28,7 @@ public class FireService implements IFireService {
     IJsonFileHandler jsonFileHandler;
 
     @Autowired
-    CalculateAgeService calculateAgeService;
+    ICalculateAgeService calculateAgeService;
 
     @Override
     public List<FireHabitantDetails> getFireHabitantByAdress(String address) throws IOException {

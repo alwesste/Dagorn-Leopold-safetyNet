@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyNet.controllers;
 
 import com.openclassrooms.safetyNet.result.*;
+import com.openclassrooms.safetyNet.services.*;
 import com.openclassrooms.safetyNet.services.impl.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,14 +16,14 @@ import java.util.List;
 public class DataController {
 
     private static final Logger logger = LogManager.getLogger(DataController.class);
-    private final ChildAlertService childAlertService;
-    private final FirestationsService firestationsService;
-    private final FireService fireService;
-    private final FloodService floodService;
-    private final PersonLastNameSercice personLastNameSercice;
-    private final CommunityEmailService communityEmailService;
+    private final IChildAlertService childAlertService;
+    private final IFireStationService firestationsService;
+    private final IFireService fireService;
+    private final IFloodService floodService;
+    private final IPersonLastNameSercice personLastNameSercice;
+    private final ICommunityEmailService communityEmailService;
 
-    public DataController(ChildAlertService childAlertService, FirestationsService firestationsService, FireService fireService, FloodService floodService, PersonLastNameSercice personLastNameSercice, CommunityEmailService communityEmailService) {
+    public DataController(IChildAlertService childAlertService, IFireStationService firestationsService, IFireService fireService, IFloodService floodService, IPersonLastNameSercice personLastNameSercice, ICommunityEmailService communityEmailService) {
         this.childAlertService = childAlertService;
         this.firestationsService = firestationsService;
         this.fireService = fireService;
@@ -38,7 +39,7 @@ public class DataController {
      * @throws IOException en cas d'erreur lors de l'accès aux données
      */
     @GetMapping("/childAlert")
-    private List<ChildAlert> getChild(@RequestParam("address") String address) throws IOException {
+    public List<ChildAlert> getChild(@RequestParam("address") String address) throws IOException {
         return childAlertService.getListOfChild(address);
     }
 

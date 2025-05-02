@@ -5,6 +5,7 @@ import com.openclassrooms.safetyNet.models.Firestation;
 import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.result.FloodHabitant;
 import com.openclassrooms.safetyNet.result.MedicalHistory;
+import com.openclassrooms.safetyNet.services.ICalculateAgeService;
 import com.openclassrooms.safetyNet.services.IFloodService;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +27,7 @@ public class FloodService implements IFloodService {
     IJsonFileHandler jsonFileHandler;
 
     @Autowired
-    CalculateAgeService calculateAgeService;
+        ICalculateAgeService calculateAgeService;
 
     @Override
     public List<FloodHabitant> getHomeByStation(List<String> stations) throws IOException {

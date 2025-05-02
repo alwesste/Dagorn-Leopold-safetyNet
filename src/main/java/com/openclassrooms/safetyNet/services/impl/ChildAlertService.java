@@ -5,6 +5,7 @@ import com.openclassrooms.safetyNet.models.MedicalRecord;
 import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.result.ChildAlert;
 import com.openclassrooms.safetyNet.result.FamilyMember;
+import com.openclassrooms.safetyNet.services.ICalculateAgeService;
 import com.openclassrooms.safetyNet.services.IChildAlertService;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import org.apache.logging.log4j.LogManager;
@@ -20,11 +21,11 @@ public class ChildAlertService implements IChildAlertService {
 
     private final Logger logger = LogManager.getLogger(ChildAlertService.class);
 
-    private CalculateAgeService calculateAgeService;
+    private ICalculateAgeService calculateAgeService;
 
     private IJsonFileHandler jsonFileHandler;
 
-    public ChildAlertService(IJsonFileHandler jsonFileHandler, CalculateAgeService calculateAgeService) {
+    public ChildAlertService(IJsonFileHandler jsonFileHandler, ICalculateAgeService calculateAgeService) {
         this.jsonFileHandler = jsonFileHandler;
         this.calculateAgeService = calculateAgeService;
     }

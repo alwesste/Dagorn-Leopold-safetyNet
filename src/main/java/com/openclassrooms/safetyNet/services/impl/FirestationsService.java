@@ -8,6 +8,7 @@ import com.openclassrooms.safetyNet.models.Person;
 import com.openclassrooms.safetyNet.repository.FirestationRepository;
 import com.openclassrooms.safetyNet.result.PhoneNumber;
 import com.openclassrooms.safetyNet.result.StationCover;
+import com.openclassrooms.safetyNet.services.ICalculateAgeService;
 import com.openclassrooms.safetyNet.services.IFireStationService;
 import com.openclassrooms.safetyNet.services.IJsonFileHandler;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +32,7 @@ public class FirestationsService implements IFireStationService {
     private IJsonFileHandler jsonFileHandler;
 
     @Autowired
-    CalculateAgeService calculateAgeService;
+    ICalculateAgeService calculateAgeService;
 
     @Override
     public List<StationCover> getCoverPersons(int stationNumber) throws IOException {
